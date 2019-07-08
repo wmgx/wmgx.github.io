@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[abd]]></title>
-    <url>%2F2019%2F07%2F08%2Fabd%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[程序设计：算法和数据结构 笔记1]]></title>
+    <url>%2F2019%2F07%2F09%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B01%2F</url>
+    <content type="text"><![CDATA[参考教材：《挑战程序设计竞赛2 算法数据结构》 基础篇]]></content>
       <categories>
-        <category>asdf</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>adf</tag>
+        <tag>程序, 算法</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[a]]></title>
-    <url>%2F2019%2F07%2F08%2Fa%2F</url>
-    <content type="text"></content>
   </entry>
 </search>
