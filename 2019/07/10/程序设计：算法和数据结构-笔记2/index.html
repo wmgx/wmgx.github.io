@@ -94,10 +94,12 @@
 <meta property="og:site_name">
 <meta property="og:description" content="概述栈(Stack)规则后入先出（Last In First Out,LIFO） 操作 push(X)：在栈的顶部压入元素X pop(): 从栈的顶部取出元素 isEmpty()：检查栈是否为空 isFull(): 检查栈是否已满  一般情况下，栈还具有 “引用栈顶元素”和”检查栈中是否含有指定数据“的操作 队列(Queue)规则先入先出（First In First Out） 操作 enqueu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-10T02:14:46.841Z">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/程序设计：算法和数据结构-笔记2/1562777144998.png">
+<meta property="og:updated_time" content="2019-07-14T14:29:57.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序设计：算法和数据结构 笔记2——数据结构">
 <meta name="twitter:description" content="概述栈(Stack)规则后入先出（Last In First Out,LIFO） 操作 push(X)：在栈的顶部压入元素X pop(): 从栈的顶部取出元素 isEmpty()：检查栈是否为空 isFull(): 检查栈是否已满  一般情况下，栈还具有 “引用栈顶元素”和”检查栈中是否含有指定数据“的操作 队列(Queue)规则先入先出（First In First Out） 操作 enqueu">
+<meta name="twitter:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/程序设计：算法和数据结构-笔记2/1562777144998.png">
 
 
 
@@ -403,6 +405,21 @@
 <p>一般情况下，队列还具有 “引用队列第一个元素”和”检查队列中是否含有指定数据“的操作</p>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="逆波兰表示法-栈的应用"><a href="#逆波兰表示法-栈的应用" class="headerlink" title="逆波兰表示法(栈的应用)"></a>逆波兰表示法(栈的应用)</h2><p>逆波兰表示法是一种将操作符写在操作数后面的方法，又叫 <strong>后缀表示法</strong>，相较于我们日常使用的<strong>中缀表示法</strong>，它的优势在于不需要括号</p>
 <p>例：$（1+2）\times (5+4) $ ==&gt;&gt;$1\space 2 + 5\space 4 + \times $</p>
+<ol>
+<li>将 1 2 压入栈中</li>
+<li>遇到运算符，从栈中取出两个操作数，按运算符运算，例中为+，将运算结果压入栈中，栈中数据变成了 3</li>
+<li>将 5 4 压入栈中，栈中数据变为了 3 5 4</li>
+<li>遇到操作符+ 取出两个操作数5 4 运算结果为9，压入栈中，栈中变为3 9</li>
+<li>遇到操作符$\times$ 取出3 9 运算结果为27</li>
+</ol>
+<p>一个并不完善的简单过程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">//本程序仅支持0-9的数字运算</span></span><br><span class="line"><span class="keyword">int</span> top,<span class="built_in">stack</span>[<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>[++top]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">stack</span>[top--];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">1000</span>];</span><br><span class="line">    <span class="keyword">int</span> i,a,b;</span><br><span class="line">    i=<span class="number">0</span>;</span><br><span class="line">    top=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">    <span class="keyword">while</span>(s[i]!=<span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]==<span class="string">'+'</span>)&#123;</span><br><span class="line">            a=pop();</span><br><span class="line">            b=pop();</span><br><span class="line">            push(a+b);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">'-'</span>)&#123;</span><br><span class="line">            a=pop();</span><br><span class="line">            b=pop();</span><br><span class="line">            push(a-b);        </span><br><span class="line">            </span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">'*'</span>)&#123;</span><br><span class="line">            a=pop();</span><br><span class="line">            b=pop();</span><br><span class="line">            push(a*b);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">'/'</span>)&#123;<span class="comment">//整除结果</span></span><br><span class="line">            a=pop();</span><br><span class="line">            b=pop();</span><br><span class="line">            push(a/b);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            push(s[i]<span class="number">-48</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,pop());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p><img src="程序设计：算法和数据结构-笔记2/1562777144998.png" alt="1562777144998"></p>
+<ul>
+<li>[ ] asd</li>
+<li>[x] </li>
+</ul>
 
       
     </div>
@@ -424,7 +441,7 @@
   <p><span>本文标题:</span>程序设计：算法和数据结构 笔记2——数据结构</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年07月09日 - 23:59:17</p>
-  <p><span>最后更新:</span>2019年07月10日 - 10:14:46</p>
+  <p><span>最后更新:</span>2019年07月14日 - 22:29:57</p>
   <p><span>原始链接:</span><a href="/2019/07/10/程序设计：算法和数据结构-笔记2/" title="程序设计：算法和数据结构 笔记2——数据结构">http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/" aria-label="复制成功！"></i></span>
   </p>
