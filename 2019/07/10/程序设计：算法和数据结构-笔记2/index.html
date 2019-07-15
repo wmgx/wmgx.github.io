@@ -97,7 +97,12 @@
 <meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1562777144998.png">
 <meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563126699582.png">
 <meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563127977477.png">
-<meta property="og:updated_time" content="2019-07-15T07:23:06.226Z">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563205666483.png">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563206272274.png">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563207326570.png">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563207951726.png">
+<meta property="og:image" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/1563208997950.png">
+<meta property="og:updated_time" content="2019-07-15T16:48:37.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序设计：算法和数据结构 笔记2——数据结构">
 <meta name="twitter:description" content="概述栈(Stack)规则后入先出（Last In First Out,LIFO） 操作 push(X)：在栈的顶部压入元素X pop(): 从栈的顶部取出元素 isEmpty()：检查栈是否为空 isFull(): 检查栈是否已满  一般情况下，栈还具有 “引用栈顶元素”和”检查栈中是否含有指定数据“的操作 队列(Queue)规则先入先出（First In First Out） 操作 enqueu">
@@ -379,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  2.4k
                 </span>
               
 
@@ -395,7 +400,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  11
                 </span>
               
             </div>
@@ -496,6 +501,181 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</span><br><span class="line">    S.push(<span class="number">1</span>);</span><br><span class="line">    S.push(<span class="number">2</span>);</span><br><span class="line">    S.push(<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"栈的大小："</span>&lt;&lt;S.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"栈顶元素："</span>&lt;&lt;S.top()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    S.pop();</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"栈的大小："</span>&lt;&lt;S.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"栈顶元素："</span>&lt;&lt;S.top()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
 <p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563127977477.png" alt="1563127977477"></p>
+<p>通过栈模板实现逆波兰表示</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,a,b;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stk;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">    <span class="keyword">while</span> (s[i]!=<span class="string">'\0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span>(s[i])&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">                a=stk.top();stk.pop();</span><br><span class="line">                b=stk.top();stk.pop();</span><br><span class="line">                stk.push(a+b);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                a=stk.top();stk.pop();</span><br><span class="line">                b=stk.top();stk.pop();</span><br><span class="line">                stk.push(a-b);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">                a=stk.top();stk.pop();</span><br><span class="line">                b=stk.top();stk.pop();</span><br><span class="line">                stk.push(a*b);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                stk.push(s[i]<span class="number">-48</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;stk.top()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563205666483.png" alt="1563205666483"></p>
+<h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回队列中的元素数目</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">front()</td>
+<td style="text-align:center">返回队头的元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop()</td>
+<td style="text-align:center">从队列中取出并删除元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">push(x)</td>
+<td style="text-align:center">在队列中添加元素x</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">empty()</td>
+<td style="text-align:center">当队列为空时返回true</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">queue</span>&lt;<span class="built_in">string</span>&gt; que;</span><br><span class="line">   que.push(<span class="string">"red"</span>);</span><br><span class="line">   que.push(<span class="string">"yellow"</span>);</span><br><span class="line">   que.push(<span class="string">"yellow"</span>);</span><br><span class="line">   que.push(<span class="string">"blue"</span>);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;que.front()&lt;&lt;<span class="string">"\tnow size:"</span>&lt;&lt;que.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   que.pop();</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;que.front()&lt;&lt;<span class="string">"\tnow size:"</span>&lt;&lt;que.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   que.pop();</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;que.front()&lt;&lt;<span class="string">"\tnow size:"</span>&lt;&lt;que.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   que.pop();</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;que.front()&lt;&lt;<span class="string">"\tnow size:"</span>&lt;&lt;que.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">   que.pop();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563206272274.png" alt="1563206272274"></p>
+<p>用标准库模板实现上面的队列</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;pair&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;&gt; que;</span><br><span class="line">    <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">int</span> n,q,t;</span><br><span class="line">    <span class="keyword">int</span> elaps=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;name&gt;&gt;t;</span><br><span class="line">        que.push(make_pair(name,t));</span><br><span class="line">    &#125;</span><br><span class="line">    pair&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; u;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        u=que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        <span class="keyword">if</span>(u.second-q&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">            elaps+=u.second;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;u.first&lt;&lt;<span class="string">' '</span>&lt;&lt;elaps&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        u.second-=q;</span><br><span class="line">        elaps+=q;</span><br><span class="line">        que.push(u);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563207326570.png" alt="1563207326570"></p>
+<p>pair是保存对数值的结构体模板，声明时需要在&lt;&gt;中指令两个数据结构。make_pair用于生成一对数值，第一个元素通过first访问，第二个通过second访问</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>可以在添加元素是增加长度的数组成为动态数组或可变长数组。相对地，必须事先指定长度的是静态数组</p>
+<p>STL中的vector（向量）实现了动态数组</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回向量的元素数目</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">push_back(x)</td>
+<td style="text-align:center">在向量的末尾添加x</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop_back()</td>
+<td style="text-align:center">删除向量的最后一个元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">begin()</td>
+<td style="text-align:center">返回指向向量开头的迭代器</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">end()</td>
+<td style="text-align:center">返回指向向量结尾的迭代器</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">insert(p,x)</td>
+<td style="text-align:center">在向量中迭代器p指向的位置插入x</td>
+<td style="text-align:center">O(n)</td>
+</tr>
+<tr>
+<td style="text-align:center">erase(p)</td>
+<td style="text-align:center">删除向量中迭代器p指向的元素</td>
+<td style="text-align:center">O(n)</td>
+</tr>
+<tr>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">删除向量中所有元素</td>
+<td style="text-align:center">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; v)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;v[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; vec;</span><br><span class="line">    vec.push_back(<span class="number">0.1</span>);</span><br><span class="line">    vec.push_back(<span class="number">0.2</span>);</span><br><span class="line">    vec.push_back(<span class="number">0.3</span>);</span><br><span class="line">    vec[<span class="number">2</span>]=<span class="number">0.4</span>;</span><br><span class="line">    output(vec);</span><br><span class="line">    </span><br><span class="line">    vec.insert(vec.begin()+<span class="number">2</span>,<span class="number">0.8</span>);</span><br><span class="line">    output(vec);</span><br><span class="line"></span><br><span class="line">    vec.erase(vec.begin()+<span class="number">1</span>);</span><br><span class="line">    output(vec);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563207951726.png" alt="1563207951726"></p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>list是一个双向列表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size()</td>
+<td style="text-align:center">返回向量的元素数目</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">push_back(x)</td>
+<td style="text-align:center">在向量的末尾添加x</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">push_front(x)</td>
+<td style="text-align:center">在向量的开头添加x</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop_back()</td>
+<td style="text-align:center">删除向量的最后一个元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop_front()</td>
+<td style="text-align:center">删除向量的开头元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">begin()</td>
+<td style="text-align:center">返回指向向量开头的迭代器</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">end()</td>
+<td style="text-align:center">返回指向向量结尾的迭代器</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">insert(p,x)</td>
+<td style="text-align:center">在向量中迭代器p指向的位置插入x</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">erase(p)</td>
+<td style="text-align:center">删除向量中迭代器p指向的元素</td>
+<td style="text-align:center">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">clear()</td>
+<td style="text-align:center">删除向量中所有元素</td>
+<td style="text-align:center">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">list</span>&lt;<span class="keyword">char</span>&gt; li;</span><br><span class="line">    li.push_back(<span class="string">'b'</span>);  <span class="comment">//[b]</span></span><br><span class="line">    li.push_front(<span class="string">'a'</span>); <span class="comment">//[ab]</span></span><br><span class="line">    li.push_back(<span class="string">'c'</span>);  <span class="comment">//[abc]</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;li.front();   <span class="comment">//a</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;li.back();    <span class="comment">//c</span></span><br><span class="line">    li.pop_front();     <span class="comment">//[bc]</span></span><br><span class="line">    li.push_back(<span class="string">'d'</span>);  <span class="comment">//[bcd]</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;li.front();   <span class="comment">//b</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;li.back();    <span class="comment">//d</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="/2019/07/10/程序设计：算法和数据结构-笔记2/1563208997950.png" alt="1563208997950"></p>
 
       
     </div>
@@ -517,7 +697,7 @@
   <p><span>本文标题:</span>程序设计：算法和数据结构 笔记2——数据结构</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年07月09日 - 23:59:17</p>
-  <p><span>最后更新:</span>2019年07月15日 - 15:23:06</p>
+  <p><span>最后更新:</span>2019年07月16日 - 00:48:37</p>
   <p><span>原始链接:</span><a href="/2019/07/10/程序设计：算法和数据结构-笔记2/" title="程序设计：算法和数据结构 笔记2——数据结构">http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记2/" aria-label="复制成功！"></i></span>
   </p>
@@ -604,6 +784,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" rel="prev" title="程序设计：算法和数据结构 笔记3——搜索算法">
+                程序设计：算法和数据结构 笔记3——搜索算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -681,7 +865,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +887,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -752,7 +936,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-Stack"><span class="nav-number">1.1.</span> <span class="nav-text">栈(Stack)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则"><span class="nav-number">1.1.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列-Queue"><span class="nav-number">1.2.</span> <span class="nav-text">队列(Queue)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逆波兰表示法-栈的应用"><span class="nav-number">2.1.</span> <span class="nav-text">逆波兰表示法(栈的应用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.2.</span> <span class="nav-text">队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STL-C-标准库"><span class="nav-number">3.</span> <span class="nav-text">STL(C++标准库)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">3.1.</span> <span class="nav-text">stack</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-Stack"><span class="nav-number">1.1.</span> <span class="nav-text">栈(Stack)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则"><span class="nav-number">1.1.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列-Queue"><span class="nav-number">1.2.</span> <span class="nav-text">队列(Queue)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逆波兰表示法-栈的应用"><span class="nav-number">2.1.</span> <span class="nav-text">逆波兰表示法(栈的应用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列"><span class="nav-number">2.2.</span> <span class="nav-text">队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STL-C-标准库"><span class="nav-number">3.</span> <span class="nav-text">STL(C++标准库)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">3.1.</span> <span class="nav-text">stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queue"><span class="nav-number">3.2.</span> <span class="nav-text">queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector"><span class="nav-number">3.3.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">3.4.</span> <span class="nav-text">list</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -786,7 +970,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.5k</span>
+    <span title="Site words total count">3.5k</span>
   
 </div>
 
