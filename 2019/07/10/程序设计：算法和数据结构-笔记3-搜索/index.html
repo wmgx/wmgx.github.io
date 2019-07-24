@@ -86,18 +86,21 @@
 
 
 
-<meta name="description" content="blog">
+<meta name="description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
 <meta name="keywords" content="算法,学习笔记,搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序设计：算法和数据结构 笔记3——搜索算法">
+<meta property="og:title" content="程序设计：算法和数据结构 笔记3——搜索">
 <meta property="og:url" content="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="blog">
+<meta property="og:description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T16:52:49.074Z">
+<meta property="og:image" content="http://image.wmgx.top/img/20190724183930.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190724183948.png">
+<meta property="og:updated_time" content="2019-07-24T10:39:54.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序设计：算法和数据结构 笔记3——搜索算法">
-<meta name="twitter:description" content="blog">
+<meta name="twitter:title" content="程序设计：算法和数据结构 笔记3——搜索">
+<meta name="twitter:description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
+<meta name="twitter:image" content="http://image.wmgx.top/img/20190724183930.png">
 
 
 
@@ -133,7 +136,7 @@
 
 
 
-  <title>程序设计：算法和数据结构 笔记3——搜索算法 | </title>
+  <title>程序设计：算法和数据结构 笔记3——搜索 | </title>
   
 
 
@@ -309,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">程序设计：算法和数据结构 笔记3——搜索算法</h1>
+          <h1 class="post-title" itemprop="name headline">程序设计：算法和数据结构 笔记3——搜索</h1>
         
 
         <div class="post-meta">
@@ -375,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  930
                 </span>
               
 
@@ -391,7 +394,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -412,7 +415,71 @@
       
 
       
-        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A&#123;搜索&#125; --&gt;B(线性搜索)</span><br><span class="line">A--&gt; C(二分搜索)</span><br><span class="line">A--&gt; E(散列)</span><br></pre></td></tr></table></figure>
+<h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
+<p><strong>思路</strong>：</p>
+<ol>
+<li>将整个数组（升序）作为搜索范围</li>
+<li>检查位于搜索范围正中央的元素</li>
+<li>如果一致则结束</li>
+<li>如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。</li>
+<li>如果到最后没找到，就返回特定值，表示未找到</li>
+</ol>
+<h2 id="散列法"><a href="#散列法" class="headerlink" title="散列法"></a>散列法</h2><p>在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。</p>
+<h1 id="线性搜索-1"><a href="#线性搜索-1" class="headerlink" title="线性搜索"></a>线性搜索</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c</strong></p>
+<p><strong>输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。</strong></p>
+<p><strong>输出：用1行输出C</strong></p>
+<p><strong>限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复</strong></p>
+<p><strong>输入示例:</strong></p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="symbol">3 </span><span class="number">4</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    A[n]=key;<span class="comment">//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果</span></span><br><span class="line">    <span class="keyword">while</span>(A[i]!=key) i++;</span><br><span class="line">    <span class="keyword">return</span> i!=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183930.png" alt>因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$</p>
+<h1 id="二分搜索-1"><a href="#二分搜索-1" class="headerlink" title="二分搜索"></a>二分搜索</h1><p>对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元素数</th>
+<th style="text-align:center">线性搜索</th>
+<th style="text-align:center">二分搜索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最坏情况下二分搜索的复杂度大概是$log_2n$</p>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>同上题，假设输入有序数列</p>
+<h2 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">        mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(key==A[mid]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key&gt;A[mid])left=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183948.png" alt></p>
+<h1 id="散列法-1"><a href="#散列法-1" class="headerlink" title="散列法"></a>散列法</h1><p>不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值</p>
+<p>数组索引 a[0],a[1],a[2]……</p>
+<p>散列        a[key0],a[key1],a[key2]……</p>
+<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><ul>
+<li>通过散列函数将</li>
+</ul>
+
       
     </div>
     
@@ -430,11 +497,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
  
-  <p><span>本文标题:</span>程序设计：算法和数据结构 笔记3——搜索算法</p>
+  <p><span>本文标题:</span>程序设计：算法和数据结构 笔记3——搜索</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年07月09日 - 23:59:17</p>
-  <p><span>最后更新:</span>2019年07月16日 - 00:52:49</p>
-  <p><span>原始链接:</span><a href="/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" title="程序设计：算法和数据结构 笔记3——搜索算法">http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/</a>
+  <p><span>最后更新:</span>2019年07月24日 - 18:39:54</p>
+  <p><span>原始链接:</span><a href="/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" title="程序设计：算法和数据结构 笔记3——搜索">http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wmgx.github.io/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -572,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -652,6 +728,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性搜索"><span class="nav-number">1.1.</span> <span class="nav-text">线性搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分搜索"><span class="nav-number">1.2.</span> <span class="nav-text">二分搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列法"><span class="nav-number">1.3.</span> <span class="nav-text">散列法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性搜索-1"><span class="nav-number">2.</span> <span class="nav-text">线性搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序"><span class="nav-number">2.2.</span> <span class="nav-text">程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索-1"><span class="nav-number">3.</span> <span class="nav-text">二分搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目-1"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序-1"><span class="nav-number">3.2.</span> <span class="nav-text">程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列法-1"><span class="nav-number">4.</span> <span class="nav-text">散列法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法："><span class="nav-number">4.1.</span> <span class="nav-text">方法：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -679,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.5k</span>
+    <span title="Site words total count">4.5k</span>
   
 </div>
 
