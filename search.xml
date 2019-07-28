@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[deepin linux 下安装Typora]]></title>
+    <url>%2F2019%2F07%2F29%2Fdeepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora%2F</url>
+    <content type="text"><![CDATA[一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora's repositorysudo add-apt-repository 'deb https://typora.io/linux ./'sudo apt-get update# install typorasudo apt-get install typora 这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。 之后执行 1sudo apt-get install dirmngr 就可以了 但是在执行第二行的时候也报错，这里有两个解决办法 1sudo add-apt-repository 'deb https://typora.io/linux ./‘ 方法一： 1sudo vim /etc/apt/sources.list 然后手动添加sudo add-apt-repository ‘deb https://typora.io/linux ./”（不带双引号） 方法二：需要安装 12sudo apt-get install python-software-propertiessudo apt-get install software-properties-common 但是 依赖有问题 1sudo aptitude install python-software-properties 同理 1sudo aptitude install software-properties-common 然后运行 123sudo add-apt-repository ‘deb https://typora.io/linux ./’ sudo apt-get update sudo apt-get install typora 就可以完成安装 执行 1typora 就可以运行了]]></content>
+      <categories>
+        <category>程序安装经验</category>
+      </categories>
+      <tags>
+        <tag>程序安装</tag>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git添加公钥后报错sign_and_send_pubkey]]></title>
+    <url>%2F2019%2F07%2F28%2Fgit%E6%B7%BB%E5%8A%A0%E5%85%AC%E9%92%A5%E5%90%8E%E6%8A%A5%E9%94%99sign_and_send_pubkey%3A%20signing%20failed%3A%20%E2%80%A6%E2%80%A6%2F</url>
+    <content type="text"><![CDATA[错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval "$(ssh-agent -s)"ssh-add]]></content>
+      <categories>
+        <category>程序安装错误解决</category>
+      </categories>
+      <tags>
+        <tag>程序安装</tag>
+        <tag>经验</tag>
+        <tag>git</tag>
+        <tag>错误解决</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[程序设计：算法和数据结构-笔记4-递归与分治]]></title>
     <url>%2F2019%2F07%2F26%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B04-%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB%2F</url>
     <content type="text"><![CDATA[递归递归是指自己调用自己的函数。 如下面的阶乘递归 12345fact(int n)&#123; if(n==1) return n; return fact(n-1)*n;&#125; 递归函数必须要设置出口，也就是上面的 12if(n==1) return n; 分治分治的过程 将问题分割成局部问题(Divide) 递归地求解局部问题(Solve) 将局部问题的解整合成原问题的解(Conquer) 搜索： 1234567891011findMax(int A[],l,r)&#123; int m; int u,v; m=(l+r)/2; if(l==r-1)&#123; return A[l] &#125;else&#123; u=findMax(A,l,m) &#125; &#125;]]></content>
@@ -47,18 +73,6 @@
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[deepin linux 下安装Typora]]></title>
-    <url>%2F2019%2F07%2F09%2Fdeepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora%2F</url>
-    <content type="text"><![CDATA[一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora's repositorysudo add-apt-repository 'deb https://typora.io/linux ./'sudo apt-get update# install typorasudo apt-get install typora 这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。 之后执行 1sudo apt-get install dirmngr 就可以了 但是在执行第二行的时候也报错，这里有两个解决办法 1sudo add-apt-repository 'deb https://typora.io/linux ./‘ 方法一： 1sudo vim /etc/apt/sources.list 然后手动添加sudo add-apt-repository ‘deb https://typora.io/linux ./”（不带双引号） 方法二：需要安装 12sudo apt-get install python-software-propertiessudo apt-get install software-properties-common 但是 依赖有问题 1sudo aptitude install python-software-properties 同理 1sudo aptitude install software-properties-common 然后运行 123sudo add-apt-repository ‘deb https://typora.io/linux ./’ sudo apt-get update sudo apt-get install typora 就可以完成安装 执行 1typora 就可以运行了]]></content>
-      <categories>
-        <category>程序安装经验</category>
-      </categories>
-      <tags>
-        <tag>程序安装</tag>
-        <tag>经验</tag>
       </tags>
   </entry>
 </search>
