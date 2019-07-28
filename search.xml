@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[程序设计：算法和数据结构 笔记3——搜索]]></title>
-    <url>%2F2019%2F07%2F10%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2%2F</url>
-    <content type="text"><![CDATA[概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&#123;搜索&#125; --&gt;B(线性搜索)A--&gt; C(二分搜索)A--&gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜索二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 已经排序。 思路： 将整个数组（升序）作为搜索范围 检查位于搜索范围正中央的元素 如果一致则结束 如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。 如果到最后没找到，就返回特定值，表示未找到 散列法在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。 线性搜索题目请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c 输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。 输出：用1行输出C 限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复 输入示例: 123451 2 3 4 533 4 1 输出示例： 13 程序123456789101112131415161718192021222324252627282930#include&lt;stdio.h&gt;int search(int A[],int n, int key)&#123; int i=0; A[n]=key;//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果 while(A[i]!=key) i++; return i!=n;&#125;int main()&#123; int i,n,A[10001],q,key,sum=0; scanf("%d",&amp;n); for(i=0;i&lt;n;i++)&#123; scanf("%d",&amp;A[i]); &#125; scanf("%d",&amp;q); for(i=0;i&lt;q;i++)&#123; scanf("%d",&amp;key); if (search(A,n,key)) &#123; sum++; &#125; &#125; printf("%d\n",sum); return 0;&#125; 输出结果 因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$ 二分搜索对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下 元素数 线性搜索 二分搜索 100 100 7 10000 10000 14 1000000 1000000 20 最坏情况下二分搜索的复杂度大概是$log_2n$ 题目同上题，假设输入有序数列 程序123456789101112131415161718192021222324252627282930313233343536#include&lt;stdio.h&gt;int search(int A[],int n, int key)&#123; int left=0; int right=n-1; int mid; while(left&lt;right)&#123; mid=(left+right)/2; if(key==A[mid]) return 1; if(key&gt;A[mid])left=mid+1; else right=mid-1; &#125; return 0;&#125;int main()&#123; int i,n,A[10001],q,key,sum=0; scanf("%d",&amp;n); for(i=0;i&lt;n;i++)&#123; scanf("%d",&amp;A[i]); &#125; scanf("%d",&amp;q); for(i=0;i&lt;q;i++)&#123; scanf("%d",&amp;key); if (search(A,n,key)) &#123; sum++; &#125; &#125; printf("%d\n",sum); return 0;&#125; 运行结果： 散列法不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值 数组索引 a[0],a[1],a[2]…… 散列 a[key0],a[key1],a[key2]…… 方法： 通过散列函数在键值与值之间建立一个对应的函数关系Hash() 存储位置可以通过 address=Hash(key) 的方式运算出来 在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置 散列函数方法中步骤1中所涉及的函数关系叫做散列函数 散列函数在使用的时候应该注意： 简单，快速的可以计算出结果 在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值 STL迭代器迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置 可以使用的运算符 运算符 效果 ++ 指向下一个迭代器 ==，!= 判断两个迭代器指向位置是否相等 = 将运算符右侧迭代器赋值给左侧迭代器 * 返回该位置元素 容器函数 函数名 效果 begin() 返回容器的开头元素 end() 返回容器的最后一个元素 1234567891011121314#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main()&#123; vector&lt;int&gt; v; int i; for(i=0;i&lt;10;i++)&#123; v.push_back(i); &#125; vector&lt;int&gt;::iterator iter; for(iter=v.begin();iter!=v.end();iter++)&#123; cout&lt;&lt;*iter&lt;&lt;" "; &#125;&#125;]]></content>
+    <title><![CDATA[程序设计：算法和数据结构-笔记4-递归与分治]]></title>
+    <url>%2F2019%2F07%2F26%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B04-%E9%80%92%E5%BD%92%E4%B8%8E%E5%88%86%E6%B2%BB%2F</url>
+    <content type="text"><![CDATA[递归递归是指自己调用自己的函数。 如下面的阶乘递归 12345fact(int n)&#123; if(n==1) return n; return fact(n-1)*n;&#125; 递归函数必须要设置出口，也就是上面的 12if(n==1) return n; 分治分治的过程 将问题分割成局部问题(Divide) 递归地求解局部问题(Solve) 将局部问题的解整合成原问题的解(Conquer) 搜索： 1234567891011findMax(int A[],l,r)&#123; int m; int u,v; m=(l+r)/2; if(l==r-1)&#123; return A[l] &#125;else&#123; u=findMax(A,l,m) &#125; &#125;]]></content>
       <categories>
         <category>算法学习</category>
       </categories>
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
-        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -26,6 +25,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[程序设计：算法和数据结构 笔记3——搜索]]></title>
+    <url>%2F2019%2F07%2F10%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2%2F</url>
+    <content type="text"><![CDATA[概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&#123;搜索&#125; --&gt;B(线性搜索)A--&gt; C(二分搜索)A--&gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜索二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 已经排序。 思路： 将整个数组（升序）作为搜索范围 检查位于搜索范围正中央的元素 如果一致则结束 如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。 如果到最后没找到，就返回特定值，表示未找到 散列法在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。 线性搜索题目请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c 输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。 输出：用1行输出C 限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复 输入示例: 123451 2 3 4 533 4 1 输出示例： 13 程序123456789101112131415161718192021222324252627282930#include&lt;stdio.h&gt;int search(int A[],int n, int key)&#123; int i=0; A[n]=key;//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果 while(A[i]!=key) i++; return i!=n;&#125;int main()&#123; int i,n,A[10001],q,key,sum=0; scanf("%d",&amp;n); for(i=0;i&lt;n;i++)&#123; scanf("%d",&amp;A[i]); &#125; scanf("%d",&amp;q); for(i=0;i&lt;q;i++)&#123; scanf("%d",&amp;key); if (search(A,n,key)) &#123; sum++; &#125; &#125; printf("%d\n",sum); return 0;&#125; 输出结果 因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$ 二分搜索对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下 元素数 线性搜索 二分搜索 100 100 7 10000 10000 14 1000000 1000000 20 最坏情况下二分搜索的复杂度大概是$log_2n$ 题目同上题，假设输入有序数列 程序123456789101112131415161718192021222324252627282930313233343536#include&lt;stdio.h&gt;int search(int A[],int n, int key)&#123; int left=0; int right=n-1; int mid; while(left&lt;right)&#123; mid=(left+right)/2; if(key==A[mid]) return 1; if(key&gt;A[mid])left=mid+1; else right=mid-1; &#125; return 0;&#125;int main()&#123; int i,n,A[10001],q,key,sum=0; scanf("%d",&amp;n); for(i=0;i&lt;n;i++)&#123; scanf("%d",&amp;A[i]); &#125; scanf("%d",&amp;q); for(i=0;i&lt;q;i++)&#123; scanf("%d",&amp;key); if (search(A,n,key)) &#123; sum++; &#125; &#125; printf("%d\n",sum); return 0;&#125; 运行结果： 散列法不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值 数组索引 a[0],a[1],a[2]…… 散列 a[key0],a[key1],a[key2]…… 方法： 通过散列函数在键值与值之间建立一个对应的函数关系Hash() 存储位置可以通过 address=Hash(key) 的方式运算出来 在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置 散列函数方法中步骤1中所涉及的函数关系叫做散列函数 散列函数在使用的时候应该注意： 简单，快速的可以计算出结果 在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值 STL迭代器迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置 可以使用的运算符 运算符 效果 ++ 指向下一个迭代器 ==，!= 判断两个迭代器指向位置是否相等 = 将运算符右侧迭代器赋值给左侧迭代器 * 返回该位置元素 容器函数 函数名 效果 begin() 返回容器的开头元素 end() 返回容器的最后一个元素 1234567891011121314#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main()&#123; vector&lt;int&gt; v; int i; for(i=0;i&lt;10;i++)&#123; v.push_back(i); &#125; vector&lt;int&gt;::iterator iter; for(iter=v.begin();iter!=v.end();iter++)&#123; cout&lt;&lt;*iter&lt;&lt;" "; &#125;&#125;]]></content>
+      <categories>
+        <category>算法学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>学习笔记</tag>
+        <tag>搜索</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[程序设计：算法和数据结构 笔记1]]></title>
     <url>%2F2019%2F07%2F09%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B01%2F</url>
     <content type="text"><![CDATA[基础篇基础概念复杂性评估 时间复杂度：评估执行程序所需要的时间。可以估算出程序对计算机处理器的使用程序 空间复杂度：评估执行程序 所需的存储空间。可以估算出程序 对计算机内存的使用程度 “复杂度”大多数情况下是指的时间复杂度 大O表示法：大O表示法是一种评估算法效率的“标尺”，以诸如$O(n)$、$ O(n^2)$的形式表示算法的效率，其中n为问题的数据大小。 常用的复杂度比较 $ n $ $ log(n) $ $ \sqrt n$ $ nlog(n) $ $ n^2 $ $ 2^n $ $ n! $ 5 2 2 10 25 32 120 10 3 3 30 100 1024 3628800 20 4 4 80 400 1048576 约$ 2.4 \times 10^{18}$ 50 5 7 250 2500 约$ 10^{15}$ 约$ 3 \times 10^{64}$ 100 6 10 600 10000 约$ 10^{30}$ 约$ 9.3\times 10^{157}$ 1000 9 31 9000 $ 10^6$ 约$ 10^{300}$ 约$ 4 \times 10^{2567}$ $10^4$ 13 100 $ 1.3\times 10^{5}$ $ 10^9$ 约$ 10^{3000}$ 约$ 10^{35660}$ $10^5$ 16 316 $ 1.6 \times 10^{6}$ $ 10^{10}$ 约$ 10^{30000}$ 约$ 10^{456574}$ $ 10^6$ 19 100 $ 1.9 \times 10^{7}$ $ 10^{12}$ 约$ 10^{300000}$ 约$ 10^{5565709}$ 稳定排序是指在出现多次相同数据时，能保证稳定输出的排序算法 初等排序 排序 最好 最坏 稳定情况 插入排序 N（有序） $O(N^2)$ 稳定 冒泡排序 $O(N)$ $O(N^2)$ 稳定 选择排序 $O(N^2)$ $O(N^2)$ 不稳定 希尔排序 $O(N)$ $O(N^2)$ 不稳定 插入排序 步骤： 从第一个元素开始，该元素可以认为已经被排序 取出下一个元素，在已经排序的元素序列中从后向前扫描 如果该元素（已排序）大于新元素，将该元素移到下一位置 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置 将新元素插入到该位置中 重复步骤2 1234567891011121314151617void InsertSort(int a[],int n)&#123; for(int i=0;i&lt;n;i++) &#123; int j=i-1; if(a[i]&lt;a[i-1])&#123; //若第i个元素小于第i-1个元素,移动有序序列插入------大于的话则直接插入 int swap=a[i]; //存储将要排序的元素 a[i]=a[i-1]; //向后移动一个元素 while(swap&lt;a[j])//查询将要插入的位置 &#123; a[j+1]=a[j]; j--; //元素后移 &#125; a[j+1]=swap;//循环结束 插入到指定位置 &#125; &#125;&#125; 冒泡排序 步骤： 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。 12345678910111213#include&lt;stdio.h&gt;void BuddleSort(int a[],int n)&#123; for(int i=0;i&lt;n-1;i++)&#123; for( int j=0;j&lt;n-i-1;j++)&#123; if(a[j]&gt;a[j+1])&#123; int swap=a[j]; a[j]=a[j+1]; a[j+1]=swap; &#125; &#125; &#125;&#125; 选择排序步骤： 未排序序列中找到最小元素，存放到排序序列的起始位置。 再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。 以此类推，直到所有元素均排序完毕。 1234567891011121314151617181920void SelectSort(int a[],int n)&#123; for(int i=0;i&lt;n-1;i++) &#123; int min=i; //存放数组最小值的位置 for(int j=i+1;j&lt;n;j++) &#123; if(a[j]&lt;a[min])&#123; min=j; //找出最小值，并记录位置 &#125; &#125; if(min!=i) //最小元素与第i个元素互换位置 &#123; int swap=a[min]; a[min]=a[i]; a[i]=swap; &#125; &#125;&#125; 希尔排序步骤： 选取间隔为g的元素进行插入排序 缩小g的范围，新的g与原g互质 重复执行步骤1，2 最后选取g=1执行一次插入排序 1234567891011121314151617insertionSort(A,n,g)&#123; for i = g to n-1 v=A[i] j=i-g while j&gt;=0 &amp;&amp; A[j]&gt;v A[j+g]=a[j] j=j-g cnt++ A[j+g]=v&#125;shellSort(A,n)&#123; cnt=0; m=?; g[]=&#123;……,1&#125;; for i=0 to m-1 insertionSort(A,n,g[i])&#125; 注： 最后一定要执行一次g=1的普通 插入排序 ，确保正确 参考教材：《挑战程序设计竞赛2 算法数据结构》 参考资料：https://www.cnblogs.com/xaimicom/p/9189471.html]]></content>
@@ -35,6 +47,18 @@
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[deepin linux 下安装Typora]]></title>
+    <url>%2F2019%2F07%2F09%2Fdeepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora%2F</url>
+    <content type="text"><![CDATA[一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora's repositorysudo add-apt-repository 'deb https://typora.io/linux ./'sudo apt-get update# install typorasudo apt-get install typora 这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。 之后执行 1sudo apt-get install dirmngr 就可以了 但是在执行第二行的时候也报错，这里有两个解决办法 1sudo add-apt-repository 'deb https://typora.io/linux ./‘ 方法一： 1sudo vim /etc/apt/sources.list 然后手动添加sudo add-apt-repository ‘deb https://typora.io/linux ./”（不带双引号） 方法二：需要安装 12sudo apt-get install python-software-propertiessudo apt-get install software-properties-common 但是 依赖有问题 1sudo aptitude install python-software-properties 同理 1sudo aptitude install software-properties-common 然后运行 123sudo add-apt-repository ‘deb https://typora.io/linux ./’ sudo apt-get update sudo apt-get install typora 就可以完成安装 执行 1typora 就可以运行了]]></content>
+      <categories>
+        <category>程序安装经验</category>
+      </categories>
+      <tags>
+        <tag>程序安装</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
 </search>
