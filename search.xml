@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git本机配置]]></title>
+    <url>%2F2019%2F08%2F01%2Fgit%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[配置用户名和邮箱12git config --global user.name yourUserNamegit config --global user.email yourEmail@email 生成SSH秘钥1ssh-keygen -t rsa -C "YourEmail" #注意引号 会在用户的目录下生成一个.ssh的文件夹 文件夹里面有两个文件，一个公钥一个私钥，需要讲公钥放到 github里面，才可以用本机访问github上自己的文件 将秘钥复制到github 这就是秘钥 登录github在 左侧一列中选择 然后点击 复制进来刚才的秘钥就可以了 验证输入命令 1ssh -T git@github.com 如果是第一次可能问你是yes/no 回答yes 然后提示 1Hi yourname! You've successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！！！]]></content>
+      <categories>
+        <category>踩坑记录</category>
+      </categories>
+      <tags>
+        <tag>程序安装</tag>
+        <tag>经验</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[manjaro linux 安装总结]]></title>
     <url>%2F2019%2F08%2F01%2Fmanjaro%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了） 没有前面的可能没有任何截图 deepindeepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。 因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。 装好之后，确实很漂亮，也让我很喜欢，但是最新版本中极力吹鼓的云同步功能却说我不在他们的服务范围内（WTF！？）虚拟机里还能用，一番百度，看论坛，也没有看到解决办法，还好，云同步并不是那么重要暂时，不要就不要吧。 一番操作猛如虎，终于完成了基础工作的配置，下面的dock非常不错，但是没有mac中的特效， 这个启动器也是非常不错的体验 好吧，，，这个截图是我现在系统的截图，manjao用的dde的桌面…… deepin 我一共装了两回，崩了两次。 第一次是更新系统 ，好吧，是我等不及，他一直更新不完我就重启了，然后就进不了系统界面了，输入密码之后是黑屏……无奈重装，可怜我一晚上的部署操作。 第二次是卸载软件，我应该是不太专业……不知道卸载了什么，反正突然系统自带的应用丢了一大部分，深度应用商店，深度截图，深度……都没了。 这一次装的时候，懒得拆硬盘了，直接选中移动硬盘，全盘安装，很幸运，引导卸载了移动硬盘中。 无奈下，弃坑，转投manjaro manjaromanjaro 说实话，在用之前我真不知道还有这么个系统，之前听别人提到的时候我以为是和docker类似的什么环境。 manjaro采用滚动式升级，升级系统不用重装，也可以回滚，个人感觉很不错 manjaro 几乎涵盖了所有主流的桌面系统，gonme，kde，dde等等 第一次安装了一个自带gonme的manjaro，个人感觉还是很不错的，但是在本人手残的一系列操作下，gonme还是崩溃了，至少我不知道怎么把他变回原样了，我选择重装 重装了一个kde的桌面，第一次进系统，不得不说，真的…… ………… 好慢啊………… ………… 但是kde的ui是真的漂亮，仿mac做的很好，各种窗口的动画我也非常喜欢。 但是很受不了的是，kde自带的剪贴板存不了图片,这真的很让人头疼，我想到了换剪贴板，但是多方查阅资料后，我发现，还是不会换。 无奈下我选择了重装桌面，只重装桌面，安装dde（没错，就是深度）然后将kde卸载。 但是回到dde后发现，，，，kde的动画真好看，dde的ui虽然不错但是kde动画真好看 对了 kde 对于qq好像不是很支持，安装qq的时候安装的很费劲。 这就是我现在的桌面了 经过了长达两三天，无数次的重装，终于得到了一个稍微满意的系统。 中间猜的坑，会单独做总结。]]></content>
@@ -30,7 +43,7 @@
     <url>%2F2019%2F07%2F28%2Fgit%E6%B7%BB%E5%8A%A0%E5%85%AC%E9%92%A5%E5%90%8E%E6%8A%A5%E9%94%99sign_and_send_pubkey%3A%20signing%20failed%3A%20%E2%80%A6%E2%80%A6%2F</url>
     <content type="text"><![CDATA[错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval "$(ssh-agent -s)"ssh-add]]></content>
       <categories>
-        <category>程序安装错误解决</category>
+        <category>踩坑记录</category>
       </categories>
       <tags>
         <tag>程序安装</tag>
