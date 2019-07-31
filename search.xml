@@ -5,7 +5,7 @@
     <url>%2F2019%2F08%2F01%2Fgit%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[配置用户名和邮箱12git config --global user.name yourUserNamegit config --global user.email yourEmail@email 生成SSH秘钥1ssh-keygen -t rsa -C "YourEmail" #注意引号 会在用户的目录下生成一个.ssh的文件夹 文件夹里面有两个文件，一个公钥一个私钥，需要讲公钥放到 github里面，才可以用本机访问github上自己的文件 将秘钥复制到github 这就是秘钥 登录github在 左侧一列中选择 然后点击 复制进来刚才的秘钥就可以了 验证输入命令 1ssh -T git@github.com 如果是第一次可能问你是yes/no 回答yes 然后提示 1Hi yourname! You've successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！！！]]></content>
       <categories>
-        <category>踩坑记录</category>
+        <category>程序安装</category>
       </categories>
       <tags>
         <tag>程序安装</tag>
@@ -31,7 +31,7 @@
     <url>%2F2019%2F07%2F29%2Fdeepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora%2F</url>
     <content type="text"><![CDATA[一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora's repositorysudo add-apt-repository 'deb https://typora.io/linux ./'sudo apt-get update# install typorasudo apt-get install typora 这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。 之后执行 1sudo apt-get install dirmngr 就可以了 但是在执行第二行的时候也报错，这里有两个解决办法 1sudo add-apt-repository 'deb https://typora.io/linux ./‘ 方法一： 1sudo vim /etc/apt/sources.list 然后手动添加sudo add-apt-repository ‘deb https://typora.io/linux ./”（不带双引号） 方法二：需要安装 12sudo apt-get install python-software-propertiessudo apt-get install software-properties-common 但是 依赖有问题 1sudo aptitude install python-software-properties 同理 1sudo aptitude install software-properties-common 然后运行 123sudo add-apt-repository ‘deb https://typora.io/linux ./’ sudo apt-get update sudo apt-get install typora 就可以完成安装 执行 1typora 就可以运行了]]></content>
       <categories>
-        <category>程序安装经验</category>
+        <category>程序安装</category>
       </categories>
       <tags>
         <tag>程序安装</tag>
