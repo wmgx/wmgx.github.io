@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[manjaro kde 更换 dde 桌面]]></title>
+    <url>%2F2019%2F08%2F02%2Fmanjarokde%E6%9B%B4%E6%8D%A2dde%E6%A1%8C%E9%9D%A2%2F</url>
+    <content type="text"><![CDATA[当我配置完成一切，各种工具，各种精美的动画效果，炫酷的特效。准备写博客的时候，发现复制到剪贴板中的图片，没有！没有！还是没有！ 上网一查，发现是kde中自带的剪贴板不能保存图片(里面有个设置，不保存图片，我关闭了，还是不行)，无奈下，网上有人说换剪贴板。但是我实在是不会换。 没办法舍弃了一切，放弃kde 安装dde，转了一圈又回来了。（安装deepin的桌面，不是deepin的系统） 1. 下载dde1pacman -S deepin deepin-extra 2.修改配置文件将/etc/lightdm/lightdm.conf中的选项greeter-session设置为lightdm-deepin-greeter 默认是注释掉的，将前面的#删除即可 3.禁用sddm（kde）1systemctl disable sddm 4.启用lightdm1systemctl enable lightdm 5.重启1reboot 6.卸载kde配套相关（可选）123pacman -Rsc plasmapacman -Rsc kde-applications 参考：https://www.jianshu.com/p/a1e31a9a50dc]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>manjaro，linux，踩坑记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[manjaro系统初始配置]]></title>
+    <url>%2F2019%2F08%2F02%2Fmanjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[换源更新manjaro中的包管理命令是 pacman 一个十分出色的包管理工具，解决了其他linux 下的安装依赖问题。 常用命令 123pacman -S 软件名 #安装pacman -Syu #更新pacman -R 软件名 #移除 安装完系统，首要就是更新软件和系统，更新之前，要换源，换成中国的源 1sudo pacman-mirrors -i -c China -m rank 这条命令换源到中国，并按速度排序 执行完命令之后会弹出这样的对话框 选择快的，点OK就可以了。 更新一下源 1sudo pacman -Syy 然后更新系统 1sudo pacman -Syyu 个人喜欢vim，先安装一个vim后面要用到 1sudo pacman -S vim 添加archlinuxcn软件源（archlinuxcn是一个中国的软件源，包含了很多常用的中文软件和工具） 1sudo vim /etc/pacman.conf 在文件最下面添加 12[archlinuxcn]Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 更新软件源并导入公钥 1sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring 系统的初始配置就做好了 安装软件管理工具manjaro中带有图形管理工具，可以完成应用的安装，删除，检索等操作，我系统在现在是KDE的管理工具 个人感觉不如gonme中的好用，但是却不知道怎么更换，没办法了。 安装yaourt（有些东西pacman装不了）1sudo pacman -S yaourt 安装 chrome1sudo pacman -S google-chrome 安装截图工具1sudo pacman -S deepin-screenshot 安装QQ1sudo pacman -S deepin.com.qq.im 安装TIM(kde下不好装QQ，TIM还好)1sudo pacman -S deepin.com.qq.office 安装网易云音乐1sudo pacman -S netease-cloud-music 安装搜狗输入法123sudo pacman -S fcitx-imsudo pacman -S fcitx-configtoolsudo pacman -S fcitx-sogoupinyin 添加输入法配置文件 sudo vim ~/.xprofile 123export GTK_IM_MODULE=fcitxexport QT_IM_MODULE=fcitxexport XMODIFIERS="@im=fcitx" 可以进行各种配置 配置完需要重启计算机 安装 markdown 编辑器不得不说比deepin安装得方便 1sudo yaourt typora 安装vscode1sudo pacman -S visual-studio-code-bin 安装eclipse1sudo pacman -S eclipse 安装WPS1sudo pacman -S ttf-wps-fonts 图床工具PicGo如果对图床工具有需要的话 直接到官网下载AppImage文件，双击就可以用了 到此为止，常用的软件都已经装上了]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>manjaro</tag>
+        <tag>linux</tag>
+        <tag>系统配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[manjaro安装]]></title>
+    <url>%2F2019%2F08%2F02%2Fmanjaro%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[制作启动盘安装系统,最先就要制作启动盘嘛. 推荐以 dd 模式写入(不分系统区与数据区) 在进入U盘的时候一定要bios的安全启动(Secure Boot) 关闭(Disabled)不然进不去系统. 安装系统然后就可以看到这个界面 如果你是双显卡的电脑，driver这里一定要设置为no-free，不然装好了之后，是黑屏。 进入系统后会出现这个界面。从左上角可以选择语言，点击 启动安装程序 就可以进入系统安装界面了 一步步设置下去。 如果像我一样，在移动硬盘中安装，一定要注意: 硬盘是GPT格式！！！ 硬盘是GPT格式！！！ 硬盘是GPT格式！！！ 不然这里没有你的移动硬盘出现（我为什么知道？我都被逼疯了我会不知道！？） 选择硬盘你可以自己选择挂载，也可直接全盘安装，都可以。然后就等待就可以了。 因后写的经历，当初没来得及截图，图片来源： https://cloud.tencent.com/developer/article/1390999 https://www.cnblogs.com/smlile-you-me/p/8830949.html https://zhidao.baidu.com/question/2144265946313985668.html]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>manjaro</tag>
+        <tag>linux</tag>
+        <tag>搞系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git本机配置]]></title>
     <url>%2F2019%2F08%2F01%2Fgit%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[配置用户名和邮箱12git config --global user.name yourUserNamegit config --global user.email yourEmail@email 生成SSH秘钥1ssh-keygen -t rsa -C "YourEmail" #注意引号 会在用户的目录下生成一个.ssh的文件夹 文件夹里面有两个文件，一个公钥一个私钥，需要讲公钥放到 github里面，才可以用本机访问github上自己的文件 将秘钥复制到github 这就是秘钥 登录github在 左侧一列中选择 然后点击 复制进来刚才的秘钥就可以了 验证输入命令 1ssh -T git@github.com 如果是第一次可能问你是yes/no 回答yes 然后提示 1Hi yourname! You've successfully authenticated, but GitHub does not provide shell access. 就说明你成功了！！！]]></content>
@@ -14,8 +51,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[manjaro linux 安装总结]]></title>
-    <url>%2F2019%2F08%2F01%2Fmanjaro%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%2F</url>
+    <title><![CDATA[c]]></title>
+    <url>%2F2019%2F08%2F01%2Fmanjaro%20linux%20%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了） 没有前面的可能没有任何截图 deepindeepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。 因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。 装好之后，确实很漂亮，也让我很喜欢，但是最新版本中极力吹鼓的云同步功能却说我不在他们的服务范围内（WTF！？）虚拟机里还能用，一番百度，看论坛，也没有看到解决办法，还好，云同步并不是那么重要暂时，不要就不要吧。 一番操作猛如虎，终于完成了基础工作的配置，下面的dock非常不错，但是没有mac中的特效， 这个启动器也是非常不错的体验 好吧，，，这个截图是我现在系统的截图，manjao用的dde的桌面…… deepin 我一共装了两回，崩了两次。 第一次是更新系统 ，好吧，是我等不及，他一直更新不完我就重启了，然后就进不了系统界面了，输入密码之后是黑屏……无奈重装，可怜我一晚上的部署操作。 第二次是卸载软件，我应该是不太专业……不知道卸载了什么，反正突然系统自带的应用丢了一大部分，深度应用商店，深度截图，深度……都没了。 这一次装的时候，懒得拆硬盘了，直接选中移动硬盘，全盘安装，很幸运，引导卸载了移动硬盘中。 无奈下，弃坑，转投manjaro manjaromanjaro 说实话，在用之前我真不知道还有这么个系统，之前听别人提到的时候我以为是和docker类似的什么环境。 manjaro采用滚动式升级，升级系统不用重装，也可以回滚，个人感觉很不错 manjaro 几乎涵盖了所有主流的桌面系统，gonme，kde，dde等等 第一次安装了一个自带gonme的manjaro，个人感觉还是很不错的，但是在本人手残的一系列操作下，gonme还是崩溃了，至少我不知道怎么把他变回原样了，我选择重装 重装了一个kde的桌面，第一次进系统，不得不说，真的…… ………… 好慢啊………… ………… 但是kde的ui是真的漂亮，仿mac做的很好，各种窗口的动画我也非常喜欢。 但是很受不了的是，kde自带的剪贴板存不了图片,这真的很让人头疼，我想到了换剪贴板，但是多方查阅资料后，我发现，还是不会换。 无奈下我选择了重装桌面，只重装桌面，安装dde（没错，就是深度）然后将kde卸载。 但是回到dde后发现，，，，kde的动画真好看，dde的ui虽然不错但是kde动画真好看 对了 kde 对于qq好像不是很支持，安装qq的时候安装的很费劲。 这就是我现在的桌面了 经过了长达两三天，无数次的重装，终于得到了一个稍微满意的系统。 中间猜的坑，会单独做总结。]]></content>
       <categories>
         <category>linux</category>
