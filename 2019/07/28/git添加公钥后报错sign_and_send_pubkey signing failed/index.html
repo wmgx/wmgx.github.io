@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="程序安装,经验,">
+  <meta name="keywords" content="程序安装,经验,git,错误解决,">
 
 
 
@@ -86,22 +86,20 @@
 
 
 
-<meta name="description" content="一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora&apos;s repositorysudo add-apt-repository &apos;deb https://">
-<meta name="keywords" content="程序安装,经验">
+<meta name="description" content="错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval &quot;$(ssh-agent -s)&quot;ssh-add">
+<meta name="keywords" content="程序安装,经验,git,错误解决">
 <meta property="og:type" content="article">
-<meta property="og:title" content="deepin linux 下安装Typora">
-<meta property="og:url" content="http://blog.wmgx.top/2019/07/29/deepin linux 下安装Typora/index.html">
+<meta property="og:title" content="git添加公钥后报错sign_and_send_pubkey">
+<meta property="og:url" content="http://blog.wmgx.top/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora&apos;s repositorysudo add-apt-repository &apos;deb https://">
+<meta property="og:description" content="错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval &quot;$(ssh-agent -s)&quot;ssh-add">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://image.wmgx.top/img/20190728033543.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190728033904.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190728151448.png">
-<meta property="og:updated_time" content="2019-07-31T18:59:29.224Z">
+<meta property="og:image" content="http://image.wmgx.top/img/20190728155822.png">
+<meta property="og:updated_time" content="2019-07-31T18:56:48.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="deepin linux 下安装Typora">
-<meta name="twitter:description" content="一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错 123456sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE# add Typora&apos;s repositorysudo add-apt-repository &apos;deb https://">
-<meta name="twitter:image" content="http://image.wmgx.top/img/20190728033543.png">
+<meta name="twitter:title" content="git添加公钥后报错sign_and_send_pubkey">
+<meta name="twitter:description" content="错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval &quot;$(ssh-agent -s)&quot;ssh-add">
+<meta name="twitter:image" content="http://image.wmgx.top/img/20190728155822.png">
 
 
 
@@ -131,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.wmgx.top/2019/07/29/deepin linux 下安装Typora/">
+  <link rel="canonical" href="http://blog.wmgx.top/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/">
 
 
 
 
 
-  <title>deepin linux 下安装Typora | </title>
+  <title>git添加公钥后报错sign_and_send_pubkey | </title>
   
 
 
@@ -296,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2019/07/29/deepin linux 下安装Typora/">
+    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李昊天(gx)">
@@ -313,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">deepin linux 下安装Typora</h1>
+          <h1 class="post-title" itemprop="name headline">git添加公钥后报错sign_and_send_pubkey</h1>
         
 
         <div class="post-meta">
@@ -325,7 +323,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T07:23:40+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-28T15:49:52Z">
                 2019-07-28
               </time>
             
@@ -348,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序安装/" itemprop="url" rel="index">
-                    <span itemprop="name">程序安装</span>
+                  <a href="/categories/踩坑记录/" itemprop="url" rel="index">
+                    <span itemprop="name">踩坑记录</span>
                   </a>
                 </span>
 
@@ -367,8 +365,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/07/29/deepin linux 下安装Typora/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/07/29/deepin linux 下安装Typora/" itemprop="commentsCount"></span>
+                <a href="/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -427,33 +425,11 @@
       
 
       
-        <p>一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
-<p>这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。</p>
-<p>之后执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dirmngr</span><br></pre></td></tr></table></figure>
-<p>就可以了</p>
-<p>但是在执行第二行的时候也报错，这里有两个解决办法</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./‘</span><br></pre></td></tr></table></figure>
-<p><strong>方法一：</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/apt/sources.<span class="keyword">list</span></span><br></pre></td></tr></table></figure>
-<p>然后手动添加sudo add-apt-repository ‘deb <a href="https://typora.io/linux" target="_blank" rel="noopener">https://typora.io/linux</a> ./”（不带双引号）</p>
-<p><strong>方法二：需要安装</strong></p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install python-software-<span class="built_in">properties</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install software-<span class="built_in">properties</span>-common</span><br></pre></td></tr></table></figure>
-<p>但是</p>
-<p><img src="http://image.wmgx.top/img/20190728033543.png" alt></p>
-<p>依赖有问题</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude install python-software-properties</span><br></pre></td></tr></table></figure>
-<p><img src="http://image.wmgx.top/img/20190728033904.png" alt></p>
-<p>同理</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sudo</span> aptitude install software-properties-<span class="meta">common</span></span><br></pre></td></tr></table></figure>
-<p>然后运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ‘deb https://typora.io/linux ./’ </span><br><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
-<p>就可以完成安装</p>
-<p>执行</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">typora</span></span><br></pre></td></tr></table></figure>
-<p>就可以运行了</p>
-<p><img src="http://image.wmgx.top/img/20190728151448.png" alt></p>
+        <h3 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h3><p>当在github上添加公钥之后运行<code>ssh -T git@github.com</code></p>
+<p><strong>提示错误：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sign_and_send_pubkey: signing failed: agent refused operation</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></span><br><span class="line">ssh-add</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190728155822.png" alt></p>
 
       
     </div>
@@ -472,12 +448,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
  
-  <p><span>本文标题:</span>deepin linux 下安装Typora</p>
+  <p><span>本文标题:</span>git添加公钥后报错sign_and_send_pubkey</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
-  <p><span>发布时间:</span>2019年07月28日 - 23:23:40</p>
-  <p><span>最后更新:</span>2019年08月01日 - 02:59:29</p>
-  <p><span>原始链接:</span><a href="/2019/07/29/deepin linux 下安装Typora/" title="deepin linux 下安装Typora">http://blog.wmgx.top/2019/07/29/deepin linux 下安装Typora/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/07/29/deepin linux 下安装Typora/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年07月28日 - 15:49:52</p>
+  <p><span>最后更新:</span>2019年08月01日 - 02:56:48</p>
+  <p><span>原始链接:</span><a href="/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/" title="git添加公钥后报错sign_and_send_pubkey">http://blog.wmgx.top/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -541,6 +517,10 @@
           
             <a href="/tags/经验/" rel="tag"># 经验</a>
           
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/错误解决/" rel="tag"># 错误解决</a>
+          
         </div>
       
 
@@ -552,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/28/git添加公钥后报错sign_and_send_pubkey signing failed/" rel="next" title="git添加公钥后报错sign_and_send_pubkey">
-                <i class="fa fa-chevron-left"></i> git添加公钥后报错sign_and_send_pubkey
+              <a href="/2019/07/26/程序设计：算法和数据结构-笔记4-递归与分治/" rel="next" title="程序设计：算法和数据结构-笔记4-递归与分治">
+                <i class="fa fa-chevron-left"></i> 程序设计：算法和数据结构-笔记4-递归与分治
               </a>
             
           </div>
@@ -562,8 +542,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/01/manjaro安装与初始配置/" rel="prev" title="manjaro linux 安装总结">
-                manjaro linux 安装总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/29/deepin linux 下安装Typora/" rel="prev" title="deepin linux 下安装Typora">
+                deepin linux 下安装Typora <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -621,8 +601,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -700,6 +689,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#错误描述"><span class="nav-number">1.</span> <span class="nav-text">错误描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

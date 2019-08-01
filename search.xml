@@ -40,7 +40,7 @@
   </entry>
   <entry>
     <title><![CDATA[git添加公钥后报错sign_and_send_pubkey]]></title>
-    <url>%2F2019%2F07%2F28%2Fgit%E6%B7%BB%E5%8A%A0%E5%85%AC%E9%92%A5%E5%90%8E%E6%8A%A5%E9%94%99sign_and_send_pubkey%3A%20signing%20failed%3A%20%E2%80%A6%E2%80%A6%2F</url>
+    <url>%2F2019%2F07%2F28%2Fgit%E6%B7%BB%E5%8A%A0%E5%85%AC%E9%92%A5%E5%90%8E%E6%8A%A5%E9%94%99sign_and_send_pubkey%20signing%20failed%2F</url>
     <content type="text"><![CDATA[错误描述当在github上添加公钥之后运行ssh -T git@github.com 提示错误： 12sign_and_send_pubkey: signing failed: agent refused operationPermission denied (publickey). 解决办法12eval "$(ssh-agent -s)"ssh-add]]></content>
       <categories>
         <category>踩坑记录</category>
