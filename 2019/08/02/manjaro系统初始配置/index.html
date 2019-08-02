@@ -96,12 +96,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802024811.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802024753.png">
-<meta property="og:image" content="http://blog.wmgx.top/home/gx/.config/Typora/typora-user-images/1564685817303.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190803014837.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802032408.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802031250.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802031320.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190802032203.png">
-<meta property="og:updated_time" content="2019-08-01T19:26:32.115Z">
+<meta property="og:updated_time" content="2019-08-02T17:48:42.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="manjaro系统初始配置">
 <meta name="twitter:description" content="换源更新manjaro中的包管理命令是 pacman 一个十分出色的包管理工具，解决了其他linux 下的安装依赖问题。 常用命令 123pacman -S  软件名   #安装pacman -Syu    #更新pacman -R 软件名    #移除 安装完系统，首要就是更新软件和系统，更新之前，要换源，换成中国的源 1sudo pacman-mirrors -i -c China -m ra">
@@ -424,25 +424,25 @@
 <p><strong>常用命令</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S  软件名   #安装</span><br><span class="line">pacman -Syu    #更新</span><br><span class="line">pacman -R 软件名    #移除</span><br></pre></td></tr></table></figure>
 <p>安装完系统，首要就是更新软件和系统，更新之前，要换源，换成中国的源</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -<span class="selector-tag">i</span> -c China -m rank</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 <p>这条命令换源到中国，并按速度排序</p>
 <p><img src="http://image.wmgx.top/img/20190802024811.png" alt></p>
 <p>执行完命令之后会弹出这样的对话框</p>
 <p><img src="http://image.wmgx.top/img/20190802024753.png" alt></p>
 <p>选择快的，点OK就可以了。</p>
 <p>更新一下源</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Syy</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br></pre></td></tr></table></figure>
 <p>然后更新系统</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Syyu</span></span><br></pre></td></tr></table></figure>
-<p><img src="/home/gx/.config/Typora/typora-user-images/1564685817303.png" alt="1564685817303"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190803014837.png" alt></p>
 <p>个人喜欢vim，先安装一个vim后面要用到</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -S vim</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S vim</span><br></pre></td></tr></table></figure>
 <p>添加archlinuxcn软件源（archlinuxcn是一个中国的软件源，包含了很多常用的中文软件和工具）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/pacman.conf</span><br></pre></td></tr></table></figure>
 <p>在文件最下面添加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
 <p>更新软件源并导入公钥</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy <span class="meta">&amp;&amp; sudo pacman -S archlinuxcn-keyring</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 <p>系统的初始配置就做好了</p>
 <h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><h3 id="管理工具"><a href="#管理工具" class="headerlink" title="管理工具"></a>管理工具</h3><p>manjaro中带有图形管理工具，可以完成应用的安装，删除，检索等操作，我系统在现在是KDE的管理工具</p>
 <p><img src="http://image.wmgx.top/img/20190802032408.png" alt></p>
@@ -490,7 +490,7 @@
   <p><span>本文标题:</span>manjaro系统初始配置</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年08月02日 - 02:39:49</p>
-  <p><span>最后更新:</span>2019年08月02日 - 03:26:32</p>
+  <p><span>最后更新:</span>2019年08月03日 - 01:48:42</p>
   <p><span>原始链接:</span><a href="/2019/08/02/manjaro系统初始配置/" title="manjaro系统初始配置">http://blog.wmgx.top/2019/08/02/manjaro系统初始配置/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/08/02/manjaro系统初始配置/" aria-label="复制成功！"></i></span>
   </p>
@@ -579,8 +579,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/02/manjarokde更换dde桌面/" rel="prev" title="manjaro kde 更换 dde 桌面">
-                manjaro kde 更换 dde 桌面 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/02/VSCode cc++环境配置/" rel="prev" title="Linux 下 VSCode c/c++环境配置">
+                Linux 下 VSCode c/c++环境配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -665,7 +665,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -687,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -770,7 +770,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.4k</span>
+    <span title="Site words total count">8.8k</span>
   
 </div>
 
