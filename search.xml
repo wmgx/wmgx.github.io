@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux 下 VSCode c/c++环境配置]]></title>
+    <url>%2F2019%2F08%2F03%2FVSCode%20c_c%2B%2B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[切换中文安装完成的VSCode是英文的，作为一个英文不好的中国人，我还是喜欢看中文的界面。 点击左侧的 会进入扩展商店 拓展商店中直接搜索Chinese 然后点击Install就行 安装完成后重启应用就会变成中文界面。 安装插件Code Runner 安装完成后窗口菜单栏下面就会出来一个 当你的显示页面是一个程序源文件（单个文件，不是项目）时，点击这个按钮或者按ctrl+F5就可以直接运行这个程序，方便快捷。 点击齿轮，点击配置，然后把右侧的Run In Terminal勾上，就会在控制台显示运行结果 c/c++必装的插件。 C++ IntellisenseC++的只能提示工具 C/C++ Clang Command Adapter提供静态检测（Lint） 配置环境主要是连个json文件 launch.json 点击调试，然后选择添加配置。会自动生成lanunch.json文件 这是我的配置，可以直接复制过去 要注意的就是 &quot;program&quot;: &quot;${workspaceFolder}/hello.out&quot;, //当前目录下编译后的可执行文件 "build"`1234567891011121314151617181920212223242526272829303132这里的hello.out应该是你生成的执行文件，而build 应该是你的tasks的lable```json&#123; // Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes. // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387 &quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ &#123; &quot;name&quot;: &quot;debug cpp&quot;, //名称 &quot;type&quot;: &quot;cppdbg&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/hello.out&quot;, //当前目录下编译后的可执行文件 &quot;args&quot;: [], &quot;stopAtEntry&quot;: false, &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, //表示当前目录 &quot;environment&quot;: [], &quot;externalConsole&quot;: false, // 在vscode自带的终端中运行，不打开外部终端 &quot;MIMode&quot;: &quot;gdb&quot;, //用gdb来debug &quot;setupCommands&quot;: [ &#123; &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;, &quot;text&quot;: &quot;-enable-pretty-printing&quot;, &quot;ignoreFailures&quot;: true &#125; ], &quot;preLaunchTask&quot;: &quot;build&quot; //执行lanuch之前运行的task &#125; ]&#125; tasks.json按住ctrl+shift+p 输入tasks，选择configure Task 选择使用模板创建然后选others 就会生成tasks.json文件 仍旧可以直接拷贝 参数应该是自己的，多个文件编译，和在bash中写一样，也可以用makefile 1234567891011121314151617&#123; // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format "version": "2.0.0", "tasks": [ &#123; "label": "build", // task的名字 "type": "shell", "command": "g++", //编译命令 "args": [ //编译参数列表 "hello.cpp", "-o", "hello.out" ] &#125; ]&#125; c_cpp_properties.json ctrl+shift+p 输入c/c++:Edit Configurations 选择这一项就可以创建一个c_cpp_properties.json文件 不用改动，我也贴出来我的配置 12345678910111213141516&#123; "configurations": [ &#123; "name": "Linux", "includePath": [ "$&#123;workspaceFolder&#125;/**" ], "defines": [], "compilerPath": "/usr/bin/gcc", "cStandard": "c11", "cppStandard": "c++17", "intelliSenseMode": "gcc-x64" &#125; ], "version": 4&#125; 如果有自己的外链库也是添加到这里面。]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>VScode</tag>
+        <tag>程序安装</tag>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[manjaro kde 更换 dde 桌面]]></title>
     <url>%2F2019%2F08%2F02%2Fmanjarokde%E6%9B%B4%E6%8D%A2dde%E6%A1%8C%E9%9D%A2%2F</url>
     <content type="text"><![CDATA[当我配置完成一切，各种工具，各种精美的动画效果，炫酷的特效。准备写博客的时候，发现复制到剪贴板中的图片，没有！没有！还是没有！ 上网一查，发现是kde中自带的剪贴板不能保存图片(里面有个设置，不保存图片，我关闭了，还是不行)，无奈下，网上有人说换剪贴板。但是我实在是不会换。 没办法舍弃了一切，放弃kde 安装dde，转了一圈又回来了。（安装deepin的桌面，不是deepin的系统） 1. 下载dde1pacman -S deepin deepin-extra 2.修改配置文件将/etc/lightdm/lightdm.conf中的选项greeter-session设置为lightdm-deepin-greeter 默认是注释掉的，将前面的#删除即可 3.禁用sddm（kde）1systemctl disable sddm 4.启用lightdm1systemctl enable lightdm 5.重启1reboot 6.卸载kde配套相关（可选）123pacman -Rsc plasmapacman -Rsc kde-applications 参考：https://www.jianshu.com/p/a1e31a9a50dc]]></content>
@@ -9,19 +22,6 @@
       </categories>
       <tags>
         <tag>manjaro，linux，踩坑记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Linux 下 VSCode c/c++环境配置]]></title>
-    <url>%2F2019%2F08%2F02%2FVSCode%20c_c%2B%2B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[切换中文安装完成的VSCode是英文的，作为一个英文不好的中国人，我还是喜欢看中文的界面。 点击左侧的 会进入扩展商店 拓展商店中直接搜索Chinese 然后点击Install就行 安装完成后重启应用就会变成中文界面。 安装插件Code Runner 安装完成后窗口菜单栏下面就会出来一个 当你的显示页面是一个程序源文件（单个文件，不是项目）时，点击这个按钮或者按ctrl+F5就可以直接运行这个程序，方便快捷。 点击齿轮，点击配置，然后把右侧的Run In Terminal勾上，就会在控制台显示运行结果 c/c++必装的插件。 C++ IntellisenseC++的只能提示工具 C/C++ Clang Command Adapter提供静态检测（Lint） 配置环境主要是连个json文件 launch.json 点击调试，然后选择添加配置。会自动生成lanunch.json文件 这是我的配置，可以直接复制过去 要注意的就是 &quot;program&quot;: &quot;${workspaceFolder}/hello.out&quot;, //当前目录下编译后的可执行文件 "build"`1234567891011121314151617181920212223242526272829303132这里的hello.out应该是你生成的执行文件，而build 应该是你的tasks的lable```json&#123; // Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes. // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387 &quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ &#123; &quot;name&quot;: &quot;debug cpp&quot;, //名称 &quot;type&quot;: &quot;cppdbg&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/hello.out&quot;, //当前目录下编译后的可执行文件 &quot;args&quot;: [], &quot;stopAtEntry&quot;: false, &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, //表示当前目录 &quot;environment&quot;: [], &quot;externalConsole&quot;: false, // 在vscode自带的终端中运行，不打开外部终端 &quot;MIMode&quot;: &quot;gdb&quot;, //用gdb来debug &quot;setupCommands&quot;: [ &#123; &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;, &quot;text&quot;: &quot;-enable-pretty-printing&quot;, &quot;ignoreFailures&quot;: true &#125; ], &quot;preLaunchTask&quot;: &quot;build&quot; //执行lanuch之前运行的task &#125; ]&#125; tasks.json按住ctrl+shift+p 输入tasks，选择configure Task 选择使用模板创建然后选others 就会生成tasks.json文件 仍旧可以直接拷贝 参数应该是自己的，多个文件编译，和在bash中写一样，也可以用makefile 1234567891011121314151617&#123; // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format "version": "2.0.0", "tasks": [ &#123; "label": "build", // task的名字 "type": "shell", "command": "g++", //编译命令 "args": [ //编译参数列表 "hello.cpp", "-o", "hello.out" ] &#125; ]&#125; c_cpp_properties.json ctrl+shift+p 输入c/c++:Edit Configurations 选择这一项就可以创建一个c_cpp_properties.json文件 不用改动，我也贴出来我的配置 12345678910111213141516&#123; "configurations": [ &#123; "name": "Linux", "includePath": [ "$&#123;workspaceFolder&#125;/**" ], "defines": [], "compilerPath": "/usr/bin/gcc", "cStandard": "c11", "cppStandard": "c++17", "intelliSenseMode": "gcc-x64" &#125; ], "version": 4&#125; 如果有自己的外链库也是添加到这里面。]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>程序安装</tag>
-        <tag>经验</tag>
-        <tag>VScode</tag>
       </tags>
   </entry>
   <entry>
