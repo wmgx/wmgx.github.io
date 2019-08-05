@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.wmgx.top/2019/08/01/git%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2019-08-05</lastmod>
+  </url>  <url>
+    <loc>http://blog.wmgx.top/2019/08/06/npm%E6%8D%A2%E6%BA%90/</loc>
+    <lastmod>2019-08-05</lastmod>
+  </url>  <url>
     <loc>http://blog.wmgx.top/2019/08/03/VSCode%20c_c++%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
@@ -14,9 +20,6 @@
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
     <loc>http://blog.wmgx.top/2019/08/02/manjaro%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2019-08-01</lastmod>
-  </url>  <url>
-    <loc>http://blog.wmgx.top/2019/08/01/git%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2019-08-01</lastmod>
   </url>  <url>
     <loc>http://blog.wmgx.top/2019/07/29/deepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora/</loc>
