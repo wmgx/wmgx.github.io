@@ -5,7 +5,7 @@
     <url>%2F2019%2F08%2F12%2Fmanjarokde%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[我的manjaro用的是dde的桌面，诚然，非常不错，真的非常不错，就是稍微，启动应用程序慢了点，让我真的有一丢丢的无奈。 无奈下我还是尝试了一下kde的manjaro，前面说过，kde，慢！慢！！慢！！！。 kde启动是真的很慢，但是进了桌面，加载完成之后，其实，感觉，还挺好的，包括各种动画啊啥的都设置好了，启动程序说实话比dde启动程序快的好多，而且动画我也很喜欢。 但是还是遇到了一些问题不知道怎么解决。 全局菜单有时有有时没有，因为先在移动硬盘中装过一个manjaro kde系统，配置运行之后，感觉非常不错，这个全局菜单应该是支持chrome，typora，VScode 等一系列软件的，但是不知道为什么，现在只支持系统原生的了，很奇怪 PicGo上传缓慢，在移动硬盘里面的系统运行时都是秒传的，这一点我也不知道为什么 eclipse报了一个冲突的错误，只要打开.java的文件就报错，没办法，我重装了一次系统。 附上我简单配置的桌面，虽然不好看……]]></content>
       <categories>
-        <category>manjaro</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>manjaro</tag>
