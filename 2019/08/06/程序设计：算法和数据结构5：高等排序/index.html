@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="manjaro,linux,踩坑经验,">
+  <meta name="keywords" content="算法,学习笔记,排序,">
 
 
 
@@ -88,22 +88,25 @@
 
 
 
-<meta name="description" content="折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了） 没有前面的可能没有任何截图 deepindeepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。 因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。 装好">
-<meta name="keywords" content="manjaro,linux,踩坑经验">
+<meta name="description" content="归并排序过程有些复杂，先来张动图掩饰下尴尬。  过程 将给定的包含n个元素的局部数“分割”成两个局部数组，每个数组各包含$\frac{n}{2}$个元素。（Divide） 对连个局部数组分别执行 mergeSort(归并)排序。(Solve) 通过merge将连个已经排序完成的数组“整合”成一个数组。(Conquer)  merge对于merge过程，可以利用已经排好序的前提条件，执行$O(n1+">
+<meta name="keywords" content="算法,学习笔记,排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="manjaro linux 安装总结">
-<meta property="og:url" content="http://blog.wmgx.top/2019/08/01/manjaro linux 安装总结/index.html">
+<meta property="og:title" content="程序设计：算法和数据结构 笔记5——高等排序">
+<meta property="og:url" content="http://blog.wmgx.top/2019/08/06/程序设计：算法和数据结构5：高等排序/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了） 没有前面的可能没有任何截图 deepindeepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。 因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。 装好">
+<meta property="og:description" content="归并排序过程有些复杂，先来张动图掩饰下尴尬。  过程 将给定的包含n个元素的局部数“分割”成两个局部数组，每个数组各包含$\frac{n}{2}$个元素。（Divide） 对连个局部数组分别执行 mergeSort(归并)排序。(Solve) 通过merge将连个已经排序完成的数组“整合”成一个数组。(Conquer)  merge对于merge过程，可以利用已经排好序的前提条件，执行$O(n1+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://image.wmgx.top/img/20190731231245.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190731231412.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190731231245.png">
-<meta property="og:updated_time" content="2019-08-01T19:46:01.599Z">
+<meta property="og:image" content="http://image.wmgx.top/img/20190806020435.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190806020621.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190806023609.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190810023730.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190810024709.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190810024709.png">
+<meta property="og:updated_time" content="2019-08-09T18:53:23.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="manjaro linux 安装总结">
-<meta name="twitter:description" content="折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了） 没有前面的可能没有任何截图 deepindeepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。 因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。 装好">
-<meta name="twitter:image" content="http://image.wmgx.top/img/20190731231245.png">
+<meta name="twitter:title" content="程序设计：算法和数据结构 笔记5——高等排序">
+<meta name="twitter:description" content="归并排序过程有些复杂，先来张动图掩饰下尴尬。  过程 将给定的包含n个元素的局部数“分割”成两个局部数组，每个数组各包含$\frac{n}{2}$个元素。（Divide） 对连个局部数组分别执行 mergeSort(归并)排序。(Solve) 通过merge将连个已经排序完成的数组“整合”成一个数组。(Conquer)  merge对于merge过程，可以利用已经排好序的前提条件，执行$O(n1+">
+<meta name="twitter:image" content="http://image.wmgx.top/img/20190806020435.png">
 
 
 
@@ -133,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.wmgx.top/2019/08/01/manjaro linux 安装总结/">
+  <link rel="canonical" href="http://blog.wmgx.top/2019/08/06/程序设计：算法和数据结构5：高等排序/">
 
 
 
 
 
-  <title>manjaro linux 安装总结 | </title>
+  <title>程序设计：算法和数据结构 笔记5——高等排序 | </title>
   
 
 
@@ -298,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2019/08/01/manjaro linux 安装总结/">
+    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2019/08/06/程序设计：算法和数据结构5：高等排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李昊天(gx)">
@@ -315,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">manjaro linux 安装总结</h1>
+          <h1 class="post-title" itemprop="name headline">程序设计：算法和数据结构 笔记5——高等排序</h1>
         
 
         <div class="post-meta">
@@ -327,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T06:35:45+08:00">
-                2019-07-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T09:52:29+08:00">
+                2019-08-06
               </time>
             
 
@@ -350,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/算法学习/" itemprop="url" rel="index">
+                    <span itemprop="name">算法学习</span>
                   </a>
                 </span>
 
@@ -386,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  870
+                  1.1k
                 </span>
               
 
@@ -402,7 +405,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -423,37 +426,49 @@
       
 
       
-        <p>折腾了好几天，从deepin 到 manjaro 折腾好几天终于可以说是勉强弄好了（搞累了，不想搞了）</p>
-<p><strong>没有前面的可能没有任何截图</strong></p>
-<h2 id="deepin"><a href="#deepin" class="headerlink" title="deepin"></a>deepin</h2><p>deepin 一开始再B站上看见了他的UI ，感觉挺漂亮，就往打算装了移动硬盘里。</p>
-<p>因为不喜欢开机选择系统，也不想放弃windows , 第一次往移动硬盘里面装，不知道会不会把引导写进我的系统里面，我就把电脑本身的两个硬盘都拆卸了下来（原谅我的怂）。</p>
-<p>装好之后，确实很漂亮，也让我很喜欢，但是最新版本中极力吹鼓的云同步功能却说我不在他们的服务范围内（WTF！？）虚拟机里还能用，一番百度，看论坛，也没有看到解决办法，还好，云同步并不是那么重要暂时，不要就不要吧。</p>
-<p>一番操作猛如虎，终于完成了基础工作的配置，下面的dock非常不错，但是没有mac中的特效，</p>
-<p><img src="http://image.wmgx.top/img/20190731231245.png" alt></p>
-<p>这个启动器也是非常不错的体验<img src="http://image.wmgx.top/img/20190731231412.png" alt></p>
-<p>好吧，，，这个截图是我现在系统的截图，manjao用的dde的桌面……</p>
-<p>deepin 我一共装了两回，崩了两次。</p>
-<p><strong>第一次是更新系统</strong> ，好吧，是我等不及，他一直更新不完我就重启了，然后就进不了系统界面了，输入密码之后是黑屏……无奈重装，可怜我一晚上的部署操作。</p>
-<p><strong>第二次是卸载软件</strong>，我应该是不太专业……不知道卸载了什么，反正突然系统自带的应用丢了一大部分，深度应用商店，深度截图，深度……都没了。</p>
-<p>这一次装的时候，懒得拆硬盘了，直接选中移动硬盘，全盘安装，很幸运，引导卸载了移动硬盘中。</p>
-<p>无奈下，弃坑，转投manjaro</p>
-<h2 id="manjaro"><a href="#manjaro" class="headerlink" title="manjaro"></a>manjaro</h2><p>manjaro 说实话，在用之前我真不知道还有这么个系统，之前听别人提到的时候我以为是和docker类似的什么环境。</p>
-<p>manjaro采用滚动式升级，升级系统不用重装，也可以回滚，个人感觉很不错</p>
-<p>manjaro 几乎涵盖了所有主流的桌面系统，gonme，kde，dde等等</p>
-<p>第一次安装了一个自带gonme的manjaro，个人感觉还是很不错的，但是在本人手残的一系列操作下，gonme还是崩溃了，至少我不知道怎么把他变回原样了，我选择重装</p>
-<p>重装了一个kde的桌面，第一次进系统，不得不说，真的……</p>
-<p>…………</p>
-<p><strong>好慢啊…………</strong></p>
-<p>…………</p>
-<p>但是kde的ui是真的漂亮，仿mac做的很好，各种窗口的动画我也非常喜欢。</p>
-<p>但是很受不了的是，<strong>kde自带的剪贴板存不了图片</strong>,这真的很让人头疼，我想到了换剪贴板，但是多方查阅资料后，我发现，还是不会换。</p>
-<p>无奈下我选择了重装桌面，只重装桌面，安装dde（没错，就是深度）然后将kde卸载。</p>
-<p>但是回到dde后发现，，，，kde的动画真好看，dde的ui虽然不错但是kde动画真好看</p>
-<p>对了 kde 对于qq好像不是很支持，安装qq的时候安装的很费劲。</p>
-<p>这就是我现在的桌面了</p>
-<p><img src="http://image.wmgx.top/img/20190731231245.png" alt></p>
-<p>经过了长达两三天，无数次的重装，终于得到了一个稍微满意的系统。</p>
-<p>中间猜的坑，会单独做总结。</p>
+        <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>过程有些复杂，先来张动图掩饰下尴尬。</p>
+<p><img src="http://image.wmgx.top/img/20190806020435.png" alt></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
+<li>将给定的包含n个元素的局部数“分割”成两个局部数组，每个数组各包含$\frac{n}{2}$个元素。（Divide）</li>
+<li>对连个局部数组分别执行 mergeSort(归并)排序。(Solve)</li>
+<li>通过merge将连个已经排序完成的数组“整合”成一个数组。(Conquer)</li>
+</ol>
+<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>对于merge过程，可以利用已经排好序的前提条件，执行$O(n1+n2)$的算法进行整合。在左半部分（L）和右半部分（R）的末尾分别安插一个 <strong>大于所有元素的标记</strong>。在比较L、R的元素过程中，只要标记设计的足够大，切将比较次数控制在$n1+n2$($right-left$)之内，就可以防止两个标记相比较。</p>
+<h2 id="mergeSort"><a href="#mergeSort" class="headerlink" title="mergeSort"></a>mergeSort</h2><p>mergeSort 过程中，如果局部数组只剩下一个元素时，mergeSort不做任何处理直接结束。如果不是，则计算局部数组的中央位置mid，将left到mid (不包含) 视作前半部分，mid到right(不包含)视作后半部分。递归套用mergeSort</p>
+<h2 id="过程实现流程"><a href="#过程实现流程" class="headerlink" title="过程实现流程"></a>过程实现流程</h2><p><img src="http://image.wmgx.top/img/20190806020621.png" alt></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 50000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SENTINEL 2000000000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> L[MAX/<span class="number">2</span>+<span class="number">2</span>],R[MAX/<span class="number">2</span>+<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> left,<span class="keyword">int</span> mid,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n1 = mid - left;    <span class="comment">//左边的元素数目</span></span><br><span class="line">    <span class="keyword">int</span> n2 = right -mid;    <span class="comment">//右边的元素数目</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>  i = <span class="number">0</span>; i &lt; n1; i++)    L[i]=A[left+i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>  i = <span class="number">0</span>; i &lt; n2; i++)    R[i]=A[mid+i];</span><br><span class="line">    L[n1]=R[n2]=SENTINEL;   <span class="comment">//设置最大值标志</span></span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=left;k&lt;right;k++)&#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        A[k]= L[i]&lt;=R[j]? L[i++]: R[j++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left+<span class="number">1</span>&lt;right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        mergeSort(A,left,mid);</span><br><span class="line">        mergeSort(A,mid,right);</span><br><span class="line">        merge(A,left,mid,right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> A[MAX],n,i;</span><br><span class="line">    cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    mergeSort(A,<span class="number">0</span>,n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;A[i]&lt;&lt;<span class="string">"  "</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>&lt;&lt;cnt&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;   </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果</strong></p>
+<p><img src="http://image.wmgx.top/img/20190806023609.png" alt></p>
+<p>一共执行34次就完成了排序</p>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序利用基准值将数组分为两个部分，比基准值小的在基准值前面，比基准值大的在基准值后面。如果基</p>
+<h2 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>以整个数组为对象执行quickSort</p>
+</li>
+<li><p>qurickSort过程:</p>
+<ol>
+<li><p>讲数组分割成前后两个局部数组</p>
+</li>
+<li><p>对前半部分执行quickSort</p>
+</li>
+<li><p>对后半部分执行quickSort</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Max 100000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SENTINEL 2000000000</span></span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> L[Max/<span class="number">2</span>+<span class="number">2</span>],R[Max/<span class="number">2</span>+<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> t,x;</span><br><span class="line">    x=A[r];</span><br><span class="line">    i=p<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(j=p;j&lt;r;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[j]&lt;x)&#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            i++;</span><br><span class="line">            t=A[i];</span><br><span class="line">            A[i]=A[j];</span><br><span class="line">            A[j]=t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    t=A[i+<span class="number">1</span>];</span><br><span class="line">    A[i+<span class="number">1</span>]=A[r];</span><br><span class="line">    A[r]=t;</span><br><span class="line">    <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="keyword">if</span>(p&lt;r)&#123;</span><br><span class="line">        q=partition(A,p,r);</span><br><span class="line">        quickSort(A,p,q<span class="number">-1</span>);</span><br><span class="line">        quickSort(A,q+<span class="number">1</span>,r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,v;</span><br><span class="line">    <span class="keyword">int</span> A[Max];</span><br><span class="line">    cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    quickSort(A,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d  "</span>,A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n%d"</span>,cnt);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190810023730.png" alt></p>
+<p>如果中间值选的好的话次数大大减少，在上面的同等情况下，快排仅需要20次。</p>
+<h1 id="利用标准库排序"><a href="#利用标准库排序" class="headerlink" title="利用标准库排序"></a>利用标准库排序</h1><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort的第一个参数制定排序对象开头的迭代器，第二个参数制定末尾的迭代器(排序对象不包含末尾)，对于数组要代入指针。</p>
+<p>STL的sort基于快排实现，并且添加了对于最坏情况的应对机制，<strong>但是 sort 属于不稳定排序算法</strong></p>
+<p>可以用stable_sort 基于归并排序的算法，但是耗费空间大一点，速度稍慢</p>
+<h2 id="sort向量代码"><a href="#sort向量代码" class="headerlink" title="sort向量代码"></a>sort向量代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        v.push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(),v.end());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;v[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190810024709.png" alt></p>
+<h2 id="sort-数组排序"><a href="#sort-数组排序" class="headerlink" title="sort 数组排序"></a>sort 数组排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">100000</span>];</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a,a+n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190810024709.png" alt></p>
+<blockquote>
+<p><a href="https://images2018.cnblogs.com/blog/941490/201805/941490-20180514224313332-798344959.png">https://images2018.cnblogs.com/blog/941490/201805/941490-20180514224313332-798344959.png</a></p>
+<p><a href="https://www.cnblogs.com/onepixel/p/7674659.html">https://www.cnblogs.com/onepixel/p/7674659.html</a></p>
+</blockquote>
 
       
     </div>
@@ -472,12 +487,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
  
-  <p><span>本文标题:</span>manjaro linux 安装总结</p>
+  <p><span>本文标题:</span>程序设计：算法和数据结构 笔记5——高等排序</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
-  <p><span>发布时间:</span>2019年07月31日 - 22:35:45</p>
-  <p><span>最后更新:</span>2019年08月02日 - 03:46:01</p>
-  <p><span>原始链接:</span><a href="/2019/08/01/manjaro linux 安装总结/" title="manjaro linux 安装总结">http://blog.wmgx.top/2019/08/01/manjaro linux 安装总结/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/08/01/manjaro linux 安装总结/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年08月06日 - 01:52:29</p>
+  <p><span>最后更新:</span>2019年08月10日 - 02:53:23</p>
+  <p><span>原始链接:</span><a href="/2019/08/06/程序设计：算法和数据结构5：高等排序/" title="程序设计：算法和数据结构 笔记5——高等排序">http://blog.wmgx.top/2019/08/06/程序设计：算法和数据结构5：高等排序/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/08/06/程序设计：算法和数据结构5：高等排序/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -537,11 +552,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/manjaro/" rel="tag"># manjaro</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
           
-            <a href="/tags/踩坑经验/" rel="tag"># 踩坑经验</a>
+            <a href="/tags/排序/" rel="tag"># 排序</a>
           
         </div>
       
@@ -554,8 +569,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/29/deepin linux 下安装Typora/" rel="next" title="deepin linux 下安装Typora">
-                <i class="fa fa-chevron-left"></i> deepin linux 下安装Typora
+              <a href="/2019/08/06/npm换源/" rel="next" title="manjaro npm换源">
+                <i class="fa fa-chevron-left"></i> manjaro npm换源
               </a>
             
           </div>
@@ -564,8 +579,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/01/git本机配置/" rel="prev" title="git本机配置">
-                git本机配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/10/程序设计：算法与数据结构6：树形结构/" rel="prev" title="程序设计：算法与数据结构6：树形结构">
+                程序设计：算法与数据结构6：树形结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -721,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#deepin"><span class="nav-number">1.</span> <span class="nav-text">deepin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#manjaro"><span class="nav-number">2.</span> <span class="nav-text">manjaro</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#归并排序"><span class="nav-number">1.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge"><span class="nav-number">1.2.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mergeSort"><span class="nav-number">1.3.</span> <span class="nav-text">mergeSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程实现流程"><span class="nav-number">1.4.</span> <span class="nav-text">过程实现流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.5.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程-1"><span class="nav-number">2.1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现-1"><span class="nav-number">2.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用标准库排序"><span class="nav-number">3.</span> <span class="nav-text">利用标准库排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sort"><span class="nav-number">3.1.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort向量代码"><span class="nav-number">3.2.</span> <span class="nav-text">sort向量代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-数组排序"><span class="nav-number">3.3.</span> <span class="nav-text">sort 数组排序</span></a></li></ol></li></ol></div>
             
 
           </div>

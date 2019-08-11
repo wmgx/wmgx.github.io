@@ -88,21 +88,21 @@
 
 
 
-<meta name="description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
+<meta name="description" content="概述搜索是从数据集合中找出目标元素的处理。 graph LR A{搜索} --&amp;gt;B(线性搜索) A--&amp;gt; C(二分搜索) A--&amp;gt; E(散列)    线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜索二分搜索算法可以利用数据的大小进">
 <meta name="keywords" content="算法,学习笔记,搜索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程序设计：算法和数据结构 笔记3——搜索">
 <meta property="og:url" content="http://blog.wmgx.top/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
+<meta property="og:description" content="概述搜索是从数据集合中找出目标元素的处理。 graph LR A{搜索} --&amp;gt;B(线性搜索) A--&amp;gt; C(二分搜索) A--&amp;gt; E(散列)    线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜索二分搜索算法可以利用数据的大小进">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://image.wmgx.top/img/20190724183930.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190724183948.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190724193948.png">
-<meta property="og:updated_time" content="2019-07-25T08:50:51.119Z">
+<meta property="og:updated_time" content="2019-08-05T17:23:17.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序设计：算法和数据结构 笔记3——搜索">
-<meta name="twitter:description" content="概述搜索是从数据集合中找出目标元素的处理。 1234graph LRA&amp;#123;搜索&amp;#125; --&amp;gt;B(线性搜索)A--&amp;gt; C(二分搜索)A--&amp;gt; E(散列) 线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜">
+<meta name="twitter:description" content="概述搜索是从数据集合中找出目标元素的处理。 graph LR A{搜索} --&amp;gt;B(线性搜索) A--&amp;gt; C(二分搜索) A--&amp;gt; E(散列)    线性搜索线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。线性搜索的算法效率很低，但适用于任何形式的数据。 二分搜索二分搜索算法可以利用数据的大小进">
 <meta name="twitter:image" content="http://image.wmgx.top/img/20190724183930.png">
 
 
@@ -424,7 +424,13 @@
 
       
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A&#123;搜索&#125; --&gt;B(线性搜索)</span><br><span class="line">A--&gt; C(二分搜索)</span><br><span class="line">A--&gt; E(散列)</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph LR
+A{搜索} -->B(线性搜索)
+A--> C(二分搜索)
+A--> E(散列)</pre>
+
+
+
 <h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
 <h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
 <p><strong>思路</strong>：</p>
@@ -571,7 +577,7 @@
   <p><span>本文标题:</span>程序设计：算法和数据结构 笔记3——搜索</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年07月09日 - 23:59:17</p>
-  <p><span>最后更新:</span>2019年07月25日 - 16:50:51</p>
+  <p><span>最后更新:</span>2019年08月06日 - 01:23:17</p>
   <p><span>原始链接:</span><a href="/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" title="程序设计：算法和数据结构 笔记3——搜索">http://blog.wmgx.top/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/07/10/程序设计：算法和数据结构-笔记3-搜索/" aria-label="复制成功！"></i></span>
   </p>
@@ -746,7 +752,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -757,7 +763,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -768,7 +774,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -851,7 +857,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.2k</span>
+    <span title="Site words total count">9.7k</span>
   
 </div>
 
@@ -873,6 +879,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
 
         
@@ -1424,6 +1438,9 @@
   
 
   
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/js/src/custom.js"></script>
 
 </body>
 </html>
