@@ -14,7 +14,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[程序设计：算法与数据结构6：树形结构]]></title>
+    <title><![CDATA[程序设计：算法和数据结构 笔记6——树形结构]]></title>
     <url>%2F2019%2F08%2F10%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%846%EF%BC%9A%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%2F</url>
     <content type="text"><![CDATA[结构树结构树结构是一种数据结构，由节点（node）以及链接节点的边构成（edge）]]></content>
       <categories>
@@ -61,9 +61,9 @@
         <category>linux</category>
       </categories>
       <tags>
+        <tag>VScode</tag>
         <tag>程序安装</tag>
         <tag>经验</tag>
-        <tag>VScode</tag>
       </tags>
   </entry>
   <entry>
