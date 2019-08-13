@@ -88,18 +88,22 @@
 
 
 
-<meta name="description" content="结构树结构树结构是一种数据结构，由节点（node）以及链接节点的边构成（edge）">
+<meta name="description" content="树结构树结构是一种数据结构，由节点(node)以及链接节点的边构成(edge) 基础概念 根如果一棵树具有一个名为“根”(root)的特殊节点，那么这棵树被叫做有根树(rooted tree) 父结点子结点有根树的节点之间具有父子关系。设一棵有根树T，他的根r到结点x的路径上的最后一条边连接结点p与结点x，此时我们将p称为x的父结点(parent)x称为p在子结点(child) 叶我们将没有子结点">
 <meta name="keywords" content="算法,学习笔记,树形结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程序设计：算法和数据结构 笔记6——树形结构">
 <meta property="og:url" content="http://blog.wmgx.top/2019/08/10/程序设计：算法与数据结构6：树形结构/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="结构树结构树结构是一种数据结构，由节点（node）以及链接节点的边构成（edge）">
+<meta property="og:description" content="树结构树结构是一种数据结构，由节点(node)以及链接节点的边构成(edge) 基础概念 根如果一棵树具有一个名为“根”(root)的特殊节点，那么这棵树被叫做有根树(rooted tree) 父结点子结点有根树的节点之间具有父子关系。设一棵有根树T，他的根r到结点x的路径上的最后一条边连接结点p与结点x，此时我们将p称为x的父结点(parent)x称为p在子结点(child) 叶我们将没有子结点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T17:22:10.445Z">
+<meta property="og:image" content="http://image.wmgx.top/img/20190812024151.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190812031029.png">
+<meta property="og:image" content="http://image.wmgx.top/img/20190813112650.png">
+<meta property="og:updated_time" content="2019-08-13T03:39:18.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序设计：算法和数据结构 笔记6——树形结构">
-<meta name="twitter:description" content="结构树结构树结构是一种数据结构，由节点（node）以及链接节点的边构成（edge）">
+<meta name="twitter:description" content="树结构树结构是一种数据结构，由节点(node)以及链接节点的边构成(edge) 基础概念 根如果一棵树具有一个名为“根”(root)的特殊节点，那么这棵树被叫做有根树(rooted tree) 父结点子结点有根树的节点之间具有父子关系。设一棵有根树T，他的根r到结点x的路径上的最后一条边连接结点p与结点x，此时我们将p称为x的父结点(parent)x称为p在子结点(child) 叶我们将没有子结点">
+<meta name="twitter:image" content="http://image.wmgx.top/img/20190812024151.png">
 
 
 
@@ -323,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-10T10:40:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-10T02:40:04Z">
                 2019-08-10
               </time>
             
@@ -382,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  30
+                  1.1k
                 </span>
               
 
@@ -398,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -419,7 +423,69 @@
       
 
       
-        <h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><h1 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h1><p>树结构是一种数据结构，由节点（node）以及链接节点的边构成（edge）</p>
+        <h1 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h1><p>树结构是一种数据结构，由节点(node)以及链接节点的边构成(edge)</p>
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p><img src="http://image.wmgx.top/img/20190812024151.png" alt></p>
+<h4 id="根"><a href="#根" class="headerlink" title="根"></a>根</h4><p>如果一棵树具有一个名为“根”(root)的特殊节点，那么这棵树被叫做有根树(rooted tree)</p>
+<h4 id="父结点子结点"><a href="#父结点子结点" class="headerlink" title="父结点子结点"></a>父结点子结点</h4><p>有根树的节点之间具有父子关系。设一棵有根树T，他的根r到结点x的路径上的最后一条边连接结点p与结点x，此时我们将p称为x的父结点(parent)x称为p在子结点(child)</p>
+<h4 id="叶"><a href="#叶" class="headerlink" title="叶"></a>叶</h4><p>我们将没有子结点的结点称为 <strong>外部结点</strong> 或者 <strong>叶节点</strong> ，其余称为 <strong>内部结点</strong> 。</p>
+<h4 id="度"><a href="#度" class="headerlink" title="度"></a>度</h4><p>结点的子结点个数称为结点的度</p>
+<h4 id="深度"><a href="#深度" class="headerlink" title="深度"></a>深度</h4><p>从根到x的路径长度称为x的深度，结点x到叶结点的最大路径长度称为结点x的高。根的高称为 <strong>树高</strong></p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>如果一棵树拥有1个根结点，且所有结点的子结点个数都不超过2,那么这棵树称为有根二叉树。</p>
+<p><img src="http://image.wmgx.top/img/20190812031029.png" alt></p>
+<p>在二叉树中，每个结点的子结点数不超过2个，而且有左右结点之分。也就是说，当某个结点只存在一个子结点时，要严格区分是左结点还是右结点。我们将这各子结点有特定顺序的树称为有序树。</p>
+<p>二叉树可以递归进行定义。二叉树条件</p>
+<ol>
+<li>T没有任何结点</li>
+<li>T由以下三个顶点集合构成<ol>
+<li>根</li>
+<li>左子树</li>
+<li>右子树</li>
+</ol>
+</li>
+</ol>
+<h2 id="有根树的表达"><a href="#有根树的表达" class="headerlink" title="有根树的表达"></a>有根树的表达</h2><p>每个结点u的必要信息</p>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<ol>
+<li>u的结点编号</li>
+<li>u的结点种类</li>
+<li>u的父结点编号</li>
+<li>u的子结点列表</li>
+<li>u的深度</li>
+</ol>
+</blockquote>
+<h4 id="左子右兄弟表示法"><a href="#左子右兄弟表示法" class="headerlink" title="左子右兄弟表示法"></a>左子右兄弟表示法</h4><h5 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h5><blockquote>
+<ul>
+<li>结点u的父结点</li>
+<li>结点u的最左子结点</li>
+<li>结点u的右侧紧邻兄弟结点</li>
+</ul>
+</blockquote>
+<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span><span class="keyword">int</span> parent,<span class="keyword">int</span> left,<span class="keyword">int</span> right&#125;;</span><br></pre></td></tr></table></figure>
+<p>利用u.parent可以得到各结点u的父结点。不存在父结点的为根。</p>
+<p>不存在u.left的结点的为叶。</p>
+<p>不存在u.right的结点的为最右侧结点</p>
+<p><strong>为表示根及左右结点，将NIL作为特殊结点编号。保证NIL不为一般结点使用</strong></p>
+<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
+<li>深度</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getDepth(u)</span><br><span class="line">    d=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> T(u).parent!=NIL</span><br><span class="line">    	u=T(u).parent</span><br><span class="line">    	d++</span><br><span class="line">    <span class="keyword">return</span> d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>深度(递归)</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getDepth(u,p)</span><br><span class="line">    D[u]=p</span><br><span class="line">    <span class="keyword">if</span> T[u].right!=NIL</span><br><span class="line">    	getDepth(T[u].right,p)</span><br><span class="line">    <span class="keyword">if</span> T[u].left!=NIL</span><br><span class="line">    	getDepth(T[u].left,p+<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树-1"><a href="#二叉树-1" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="信息-1"><a href="#信息-1" class="headerlink" title="信息"></a>信息</h4><blockquote>
+<ul>
+<li>u的父结点</li>
+<li>u的左子结点 </li>
+<li>u的右子结点</li>
+</ul>
+</blockquote>
+<h4 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span><span class="keyword">int</span> parent,left,right&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="高"><a href="#高" class="headerlink" title="高"></a>高</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setHeight(H,u)</span><br><span class="line">    h1=h2=<span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span>(Tu).right!=NIL</span><br><span class="line">    	h1=setHeight(H,T[u].right)+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(Tu).left!=NIL</span><br><span class="line">    	h2=setHeight(H,T[u].left)+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> H[u]=max(h1,h2);</span><br></pre></td></tr></table></figure>
+<h4 id="具体表达"><a href="#具体表达" class="headerlink" title="具体表达"></a>具体表达</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 10000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NIL -1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> parent,left,right;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> <span class="title">T</span>[<span class="title">MAX</span>];</span></span><br><span class="line"><span class="keyword">int</span> n,D[MAX],H[MAX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setDepth</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u==NIL) <span class="keyword">return</span>;</span><br><span class="line">    D[u]=d;</span><br><span class="line">    setDepth(T[u].left,d+<span class="number">1</span>);</span><br><span class="line">    setDepth(T[u].right,d+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h1=<span class="number">0</span>,h2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(T[u].left!=NIL)</span><br><span class="line">        h1=setHeight(T[u].left)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(T[u].right!=NIL)</span><br><span class="line">        h2=setHeight(T[u].right)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> H[u]=(h1&gt;h2?h1:h2);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回结点u的兄弟结点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSibling</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T[u].parent==NIL) <span class="keyword">return</span> NIL;</span><br><span class="line">    <span class="keyword">if</span>(T[T[u].parent].left!=NIL &amp;&amp; T[T[u].parent].left !=u) </span><br><span class="line">        <span class="keyword">return</span> T[T[u].parent].left;</span><br><span class="line">    <span class="keyword">if</span>(T[T[u].parent].right!=NIL &amp;&amp; T[T[u].parent].right !=u) </span><br><span class="line">        <span class="keyword">return</span> T[T[u].parent].right;</span><br><span class="line">    <span class="keyword">return</span> NIL;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"node %d:"</span>,u);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"parent = %d,"</span>,T[u].parent);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"sibling = %d,"</span>,getSibling(u));</span><br><span class="line">    <span class="keyword">int</span> deg=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(T[u].left!=NIL) deg++;</span><br><span class="line">    <span class="keyword">if</span>(T[u].right!=NIL) deg++;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"degree = %d,"</span>,deg);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"depth = %d"</span>,D[u]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"height = %d"</span>,H[u]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(T[u].parent==NIL)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" root\n"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(T[u].left==NIL &amp;&amp; T[u].right==NIL)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" leaf\n"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" internal node\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> v,l,r,root=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        T[i].parent=NIL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;v,&amp;l,&amp;r);</span><br><span class="line">        T[v].left=l;</span><br><span class="line">        T[v].right=r;</span><br><span class="line">        <span class="keyword">if</span>(l!=NIL) T[l].parent=v;</span><br><span class="line">        <span class="keyword">if</span>(r!=NIL) T[r].parent=v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(T[i].parent==NIL) root=i;</span><br><span class="line">    &#125;</span><br><span class="line">    setDepth(root,<span class="number">0</span>);</span><br><span class="line">    setHeight(root);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) print(i);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">0 1 4</span><br><span class="line">1 2 3</span><br><span class="line">2 -1 -1</span><br><span class="line">3 -1 -1</span><br><span class="line">4 5 8</span><br><span class="line">5 6 7</span><br><span class="line">6 -1 -1</span><br><span class="line">7 -1 -1</span><br><span class="line">8 -1 -1</span><br></pre></td></tr></table></figure>
+<h5 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h5><p><img src="http://image.wmgx.top/img/20190813112650.png" alt></p>
 
       
     </div>
@@ -441,7 +507,7 @@
   <p><span>本文标题:</span>程序设计：算法和数据结构 笔记6——树形结构</p>
   <p><span>文章作者:</span>李昊天(gx)</p>
   <p><span>发布时间:</span>2019年08月10日 - 02:40:04</p>
-  <p><span>最后更新:</span>2019年08月12日 - 01:22:10</p>
+  <p><span>最后更新:</span>2019年08月13日 - 11:39:18</p>
   <p><span>原始链接:</span><a href="/2019/08/10/程序设计：算法与数据结构6：树形结构/" title="程序设计：算法和数据结构 笔记6——树形结构">http://blog.wmgx.top/2019/08/10/程序设计：算法与数据结构6：树形结构/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.wmgx.top/2019/08/10/程序设计：算法与数据结构6：树形结构/" aria-label="复制成功！"></i></span>
   </p>
@@ -687,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#结构"><span class="nav-number">1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树结构"><span class="nav-number">2.</span> <span class="nav-text">树结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树结构"><span class="nav-number">1.</span> <span class="nav-text">树结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.0.1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">根</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#父结点子结点"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">父结点子结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#叶"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">叶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#度"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">深度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树"><span class="nav-number">1.0.2.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有根树的表达"><span class="nav-number">1.1.</span> <span class="nav-text">有根树的表达</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#左子右兄弟表示法"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">左子右兄弟表示法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息"><span class="nav-number">1.1.0.1.1.</span> <span class="nav-text">信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构"><span class="nav-number">1.1.0.1.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法"><span class="nav-number">1.1.0.1.3.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息-1"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构-1"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">高</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体表达"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">具体表达</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输入"><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输出结果"><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">输出结果</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -721,7 +787,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.7k</span>
+    <span title="Site words total count">10.7k</span>
   
 </div>
 
