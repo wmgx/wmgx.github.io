@@ -363,6 +363,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/29/deepin linux 下安装Typora/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/29/deepin linux 下安装Typora/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -424,7 +434,7 @@
 
       
         <p>一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span><span class="bash"> add Typora<span class="string">'s repository</span></span></span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span><span class="bash"> install typora</span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
 <p>这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。</p>
 <p>之后执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dirmngr</span><br></pre></td></tr></table></figure>
@@ -635,7 +645,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -724,7 +734,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.7k</span>
+    <span title="Site words total count">12k</span>
   
 </div>
 
@@ -928,6 +938,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ktNlFjmmxSDG3sIW1ajGd0AY-gzGzoHsz# your leancloud application appid',
+        appKey: 'K9mlgGRCijSN7kUTxPTVOwYu# your leancloud application appkey',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[程序设计：算法和数据结构-笔记7-二叉搜索树]]></title>
+    <url>%2F2019%2F08%2F19%2F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B07%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[搜索树定义搜索树是一种可以进行插入、搜素、删除等操作的数据结构，可以用作字典或优先级队列。二叉搜索树属于最基本的搜索树。 性质设x为二叉搜索树的结点，如果y是x左子树的结点，那么y的键值小于等于x的键值。如果z是x的右子树中的结点，那么x的键值小于等于z的键值。 如图所示 当数据进行插入或者删除操作后，所有结点仍然满足上述的性质。 插入伪代码insert方法用于在二叉搜索树T中插入新值v，insert 将键值为v，左子树为NIL，右子树为NIL的点z作为实参传入 1234567891011121314151617insert(T,z) y=NIL //x的父结点 x='T的根节点' while x!=NIL y=x //设置父结点 if z.key &lt; x.key x=x.left else x=x.right z.p=y if y==NIL //T为空时 'T的根节点'=z else if z.key &lt;y.key y.left=z //将z定为y的左子结点 else y.right=z //将z定为y的右子结点 定义1234struct Node&#123; int key; struct Node * parent,*left,*right;&#125;;]]></content>
+      <categories>
+        <category>算法学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>学习笔记</tag>
+        <tag>搜索</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[自建图床上传]]></title>
     <url>%2F2019%2F08%2F19%2F%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A%E4%B8%8A%E4%BC%A0%2F</url>
     <content type="text"><![CDATA[前言picgo 不知道为什么很慢，测试的时候感觉应该是剪贴板的问题，因为我的oss(我用的图床是将阿里云的oss作为自己的图床，没什么访问量 ,按量付费也不贵)上已经有文件了，但是迟迟写不到剪贴板中。并且这个时候通知也会卡。picgo调用通知的地方不止一处，应该不是通知的事情。 对于文件的大小也有很大的区别，如果文件很小，传的也不算慢，但是一旦图片大了，就慢了。也不能排除是picgo调用的网络的事情。 准备因为阿里云的oss有提供命令行的程序，所以写了一个脚本来上传。 下载安装官方文档 安装配置完成后可以直接调用上传文件 如果ossutil64没有设置全局，那shell 要放了同一个目录。 要安装 xclip 用以操作剪贴板 12345678910111213Datetime=$(date "+%Y%m%d%H%M%S")xclip -selection clipboard -t image/jpg -o &gt; ~/$Datetime.jpgif test -s ~/$Datetime.jpg; then kdialog --passivepopup $Datetime.jpg保存成功 --title 提示 ./ossutil64 appendfromfile $Datetime.jpg oss://ossname/img/$Datetime.jpg kdialog --passivepopup $Datetime.jpg上传成功 --title 提示 echo "![](http://yourhost/img/$Datetime.jpg)" | xclip -selection clipboard kdialog --passivepopup 已拷贝到剪贴板http://yourhost/img/$Datetime.jpg --title 提示 rm ~/$Datetime.jpgelse kdialog --passivepopup 请检查剪贴板是否存在图片 --title 错误 rm ~/$Datetime.jpgfi Datetime=$(date &quot;+%Y%m%d%H%M%S&quot;)是作为文件名如20190102123212 xclip -selection clipboard -t image/jpg -o &gt; ~/$Datetime.jpg导出剪贴板中的图片 if test -s ~/$Datetime.jpg; then查看导出的文件大小是否为0，为0的话说明不是图片 kdialog是kde用于弹出通知的，就像这个一样 ./ossutil64 appendfromfile $Datetime.jpg oss://ossname/img/$Datetime.jpg 这一行是用于上传图片的 echo &quot;![](http://yourhost/img/$Datetime.jpg)&quot; | xclip -selection clipboard 是将链接拷贝到剪贴板，因为为将oss进行了域名绑定，所以只有后面的文件名不一样，用变量就可以。 不足我的本意是将快捷键绑定要这个脚本上，但是，不知道为啥成功不了。 进阶每次调用还是有点麻烦，速度上去了，但是操作多了。 用python 写了一个小的用户界面，点一下调用一次shell(最好还是想办法绑定快捷键) 代码1234567891011121314151617181920212223from PyQt5 import QtWidgetsimport sysimport osclass App(QtWidgets.QMainWindow): def __init__(self): super().__init__() self.setWindowTitle("阿里云oss上传") self.setFixedSize(100,100) # 设置窗口固定大小 self.main_widget = QtWidgets.QWidget() self.main_layout = QtWidgets.QVBoxLayout() self.main_widget.setLayout(self.main_layout) self.btn_1 = QtWidgets.QPushButton("上传") self.main_layout.addWidget(self.btn_1) self.btn_1.clicked.connect(self.clicks) self.setCentralWidget(self.main_widget) def clicks(self): os.system("/home/yourusername/shot.sh")if __name__ == '__main__': app = QtWidgets.QApplication(sys.argv) gui = App() gui.show() sys.exit(app.exec_())]]></content>
@@ -60,9 +73,9 @@
         <category>linux</category>
       </categories>
       <tags>
-        <tag>程序安装</tag>
         <tag>manjaro</tag>
         <tag>linux</tag>
+        <tag>程序安装</tag>
         <tag>npm</tag>
       </tags>
   </entry>
@@ -74,9 +87,9 @@
         <category>linux</category>
       </categories>
       <tags>
-        <tag>VScode</tag>
         <tag>程序安装</tag>
         <tag>经验</tag>
+        <tag>VScode</tag>
       </tags>
   </entry>
   <entry>
