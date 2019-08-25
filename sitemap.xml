@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.wmgx.top/404.html</loc>
+    
+    <lastmod>2019-08-24T23:57:26.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wmgx.top/categories/index.html</loc>
+    
+    <lastmod>2019-08-24T23:56:16.273Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wmgx.top/tags/index.html</loc>
+    
+    <lastmod>2019-08-24T23:55:50.141Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.wmgx.top/2019/08/19/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B07%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</loc>
     
     <lastmod>2019-08-20T18:04:29.454Z</lastmod>
@@ -128,23 +149,9 @@
   </url>
   
   <url>
-    <loc>http://blog.wmgx.top/categories/index.html</loc>
-    
-    <lastmod>2019-07-07T15:27:51.560Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.wmgx.top/about/index.html</loc>
     
     <lastmod>2019-07-07T15:11:41.727Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.wmgx.top/tags/index.html</loc>
-    
-    <lastmod>2019-07-07T14:47:26.844Z</lastmod>
     
   </url>
   
