@@ -80,7 +80,7 @@
 <meta property="og:image" content="http://image.wmgx.top/img/20190826215556.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190826215658.png">
 <meta property="og:image" content="http://image.wmgx.top/img/20190826220843.png">
-<meta property="og:updated_time" content="2019-08-26T14:08:49.601Z">
+<meta property="og:updated_time" content="2019-08-26T14:23:24.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自建云盘cloudreve">
 <meta name="twitter:description" content="想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。 介绍 快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储 可限制单文件最大大小、MIMEType、文件后缀、用户可用容量 自定义主题">
@@ -311,7 +311,7 @@
                 
               
 
-              <time title="创建时间：2019-08-26 20:54:13 / 修改时间：14:08:49" itemprop="dateCreated datePublished" datetime="2019-08-26T20:54:13Z">2019-08-26</time>
+              <time title="创建时间：2019-08-26 20:54:13 / 修改时间：14:23:24" itemprop="dateCreated datePublished" datetime="2019-08-26T20:54:13Z">2019-08-26</time>
             </span>
           
             
@@ -374,7 +374,7 @@
 
       
         <p>想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ul>
 <li>快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储</li>
 <li>可限制单文件最大大小、MIMEType、文件后缀、用户可用容量</li>
 <li>自定义主题配色</li>
@@ -390,42 +390,42 @@
 <li>用户组基础权限设置、二步验证</li>
 <li>WebDAV协议支持</li>
 </ul>
-<h2 id="安装需求"><a href="#安装需求" class="headerlink" title="安装需求"></a>安装需求</h2><ul>
+<h1 id="安装需求"><a href="#安装需求" class="headerlink" title="安装需求"></a>安装需求</h1><ul>
 <li>LNMP/AMP With PHP5.6+</li>
 <li>curl、fileinfo、gd扩展</li>
 <li>Composer</li>
 </ul>
-<h2 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h2><p>因为Cloudreve使用Composer实现快捷的安装与配置，解压就可以用，所以我也不想麻烦了</p>
+<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>因为Cloudreve使用Composer实现快捷的安装与配置，解压就可以用，所以我也不想麻烦了</p>
 <p><a href="https://cloudreve.org/">官网</a> 可以直接下载zip文件，解压成文件夹就可以了（<a href="https://github.com/cloudreve/Cloudreve">github</a>）</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="添加站点"><a href="#添加站点" class="headerlink" title="添加站点"></a>添加站点</h3><p>因为使用宝塔面板，所以配置十分简单 </p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="添加站点"><a href="#添加站点" class="headerlink" title="添加站点"></a>添加站点</h2><p>因为使用宝塔面板，所以配置十分简单 </p>
 <p><img src="http://image.wmgx.top/img/20190826212721.png" alt=""></p>
 <p>点击网站，添加站点</p>
 <p><img src="部署cloudreve/1566826131490.png" alt="1566826131490"></p>
 <p>设置域名，根目录设置成刚才解压的文件夹就行了</p>
-<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>访问<a href="http://你的域名/CloudreveInstaller/">http://你的域名/CloudreveInstaller/</a> 进入配置界面</p>
-<h4 id="配置伪静态"><a href="#配置伪静态" class="headerlink" title="配置伪静态"></a>配置伪静态</h4><p>如果提示 <code>2 URL Rewrite</code></p>
+<p>访问<a href="http://你的域名/CloudreveInstaller/">http://你的域名/CloudreveInstaller/</a> 进入配置界面</p>
+<h3 id="配置伪静态"><a href="#配置伪静态" class="headerlink" title="配置伪静态"></a>配置伪静态</h3><p>如果提示 <code>2 URL Rewrite</code></p>
 <p><img src="http://image.wmgx.top/img/20190826213632.png" alt=""></p>
 <p> 对于Nginx,需要配置一下伪静态</p>
 <p><img src="http://image.wmgx.top/img/20190826213247.png" alt=""></p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if (!-e <span class="formula">$request_filename) &#123;</span></span><br><span class="line"><span class="formula">        rewrite ^(.*)$</span> /index.php?s=/<span class="formula">$1 last;</span></span><br><span class="line"><span class="formula">        break;</span></span><br><span class="line"><span class="formula">    &#125;</span></span><br><span class="line"><span class="formula">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="设置读写权限"><a href="#设置读写权限" class="headerlink" title="设置读写权限"></a>设置读写权限</h4><p><img src="http://image.wmgx.top/img/20190826213905.png" alt=""></p>
+<h3 id="设置读写权限"><a href="#设置读写权限" class="headerlink" title="设置读写权限"></a>设置读写权限</h3><p><img src="http://image.wmgx.top/img/20190826213905.png" alt=""></p>
 <p><code>chomod a+w dirname</code></p>
-<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p> 如果少扩展去宝塔里面安装就行</p>
-<h4 id="最后两项"><a href="#最后两项" class="headerlink" title="最后两项"></a>最后两项</h4><p>不用管</p>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>在宝塔中创建一个数据库，这里直接写下刚才创建的各种信息就行</p>
-<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>完成后会出现这个页面，你的管理界面和账户密码（进入管理员账户可以修改）</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p> 如果少扩展去宝塔里面安装就行</p>
+<h3 id="最后两项"><a href="#最后两项" class="headerlink" title="最后两项"></a>最后两项</h3><p>不用管</p>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>在宝塔中创建一个数据库，这里直接写下刚才创建的各种信息就行</p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>完成后会出现这个页面，你的管理界面和账户密码（进入管理员账户可以修改）</p>
 <p><img src="http://image.wmgx.top/img/20190826214632.png" alt=""></p>
-<h3 id="OSS上传策略"><a href="#OSS上传策略" class="headerlink" title="OSS上传策略"></a>OSS上传策略</h3><p>进入管理界面, 点击添加</p>
+<h2 id="OSS上传策略"><a href="#OSS上传策略" class="headerlink" title="OSS上传策略"></a>OSS上传策略</h2><p>进入管理界面, 点击添加</p>
 <p><img src="http://image.wmgx.top/img/20190826214849.png" alt=""></p>
 <p><img src="http://image.wmgx.top/img/20190826214935.png" alt=""></p>
 <p>然后添加信息</p>
 <p><img src="http://image.wmgx.top/img/20190826215126.png" alt=""></p>
-<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><h4 id="空间域名"><a href="#空间域名" class="headerlink" title="空间域名"></a>空间域名</h4><p>虽然他给的是<code>http(s)://</code>但是你要不也<code>http://</code> 要不写<code>https://</code>，你如果直接写http(s)://域名，他会直接访问http(s)://域名，很明显，是没有http(s)协议的，所以oss的上传不会成功</p>
-<h4 id="OSS-配置"><a href="#OSS-配置" class="headerlink" title="OSS 配置"></a>OSS 配置</h4><p>需要在你的bucket的基础设置的跨域设置中创建规则</p>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="空间域名"><a href="#空间域名" class="headerlink" title="空间域名"></a>空间域名</h3><p>虽然他给的是<code>http(s)://</code>但是你要不也<code>http://</code> 要不写<code>https://</code>，你如果直接写http(s)://域名，他会直接访问http(s)://域名，很明显，是没有http(s)协议的，所以oss的上传不会成功</p>
+<h3 id="OSS-配置"><a href="#OSS-配置" class="headerlink" title="OSS 配置"></a>OSS 配置</h3><p>需要在你的bucket的基础设置的跨域设置中创建规则</p>
 <p><img src="http://image.wmgx.top/img/20190826215556.png" alt=""></p>
 <p>规则如下</p>
 <p><img src="http://image.wmgx.top/img/20190826215658.png" alt=""></p>
-<h3 id="应用上传策略"><a href="#应用上传策略" class="headerlink" title="应用上传策略"></a>应用上传策略</h3><p>可以在用户组中设置用户组的上传策略</p>
+<h1 id="应用上传策略"><a href="#应用上传策略" class="headerlink" title="应用上传策略"></a>应用上传策略</h1><p>可以在用户组中设置用户组的上传策略</p>
 <p><img src="http://image.wmgx.top/img/20190826220843.png" alt=""></p>
 
     </div>
@@ -644,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装需求"><span class="nav-number">2.</span> <span class="nav-text">安装需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载与安装"><span class="nav-number">3.</span> <span class="nav-text">下载与安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加站点"><span class="nav-number">4.1.</span> <span class="nav-text">添加站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-1"><span class="nav-number">4.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置伪静态"><span class="nav-number">4.2.1.</span> <span class="nav-text">配置伪静态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置读写权限"><span class="nav-number">4.2.2.</span> <span class="nav-text">设置读写权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展"><span class="nav-number">4.2.3.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后两项"><span class="nav-number">4.2.4.</span> <span class="nav-text">最后两项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库"><span class="nav-number">4.2.5.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录"><span class="nav-number">4.2.6.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSS上传策略"><span class="nav-number">4.3.</span> <span class="nav-text">OSS上传策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩坑记录"><span class="nav-number">4.4.</span> <span class="nav-text">踩坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#空间域名"><span class="nav-number">4.4.1.</span> <span class="nav-text">空间域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSS-配置"><span class="nav-number">4.4.2.</span> <span class="nav-text">OSS 配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用上传策略"><span class="nav-number">4.5.</span> <span class="nav-text">应用上传策略</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装需求"><span class="nav-number">2.</span> <span class="nav-text">安装需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载与安装"><span class="nav-number">3.</span> <span class="nav-text">下载与安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加站点"><span class="nav-number">4.1.</span> <span class="nav-text">添加站点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置伪静态"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置伪静态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置读写权限"><span class="nav-number">4.1.2.</span> <span class="nav-text">设置读写权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">4.1.3.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后两项"><span class="nav-number">4.1.4.</span> <span class="nav-text">最后两项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">4.1.5.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">4.1.6.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSS上传策略"><span class="nav-number">4.2.</span> <span class="nav-text">OSS上传策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#踩坑记录"><span class="nav-number">4.3.</span> <span class="nav-text">踩坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空间域名"><span class="nav-number">4.3.1.</span> <span class="nav-text">空间域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSS-配置"><span class="nav-number">4.3.2.</span> <span class="nav-text">OSS 配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用上传策略"><span class="nav-number">5.</span> <span class="nav-text">应用上传策略</span></a></li></ol></div>
             
 
           </div>
