@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数字电子技术基础笔记1]]></title>
+    <url>%2F2019%2F09%2F11%2F%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B01%2F</url>
+    <content type="text"><![CDATA[数值转换太简单了，不写了 常见编码 编码种类十进制数 8421码（BCD代码） 余3码 2421码 5211码 0 0000 0011 0000 0000 1 0001 0100 0001 0001 2 0010 0101 0010 0100 3 0011 0110 0011 0101 4 0100 0111 0100 0111 5 0101 1000 1011 1000 6 0110 1001 1100 1001 7 0111 1010 1101 1100 8 1000 1011 1110 1101 9 1001 1100 1111 1111 84218421又称BCD码，是最常用的一种表示，每一位对应的权值就是8421，每一位的权是固定不变的，属于恒权码。 余3码每一位在BCD代码的基础上加上 011（即3）得到的就是余3码。 余3码的0和9，1和9，2和8……互为反码。 余3码不是恒权码，因为如果试图将每个代码看作二进制数，并使它等效的十进制数与所表示的代码相等，那么代码中每一位的1所代表的十进制数在各个代码中是不固定的。 2421码同余3码一样，0和9，1和9，2和8……互为反码。 当2421是恒权码。 5211码5211是另一种恒权码，（在第六章学习，待补充……） 格雷码 十进制数 二进制码 格雷码 0 0000 0000 1 0001 0001 2 0010 0011 3 0011 0010 4 0100 0110 5 0101 0111 6 0110 0101 7 0111 0100 8 1000 1100 9 1001 1101 10 1010 1111 11 1011 1110 12 1100 1010 13 1101 1011 14 1110 1001 15 1111 1000 格雷码的相邻两个代码之间变化时，只有一位发生变化。 g1g0g3g2 00 01 10 11 00 0 1 2 3 01 7 6 5 4 10 8 9 10 11 11 15 14 13 12 逻辑代数中的三种基本运算与真值表 A B Y 0 0 0 1 0 0 0 1 0 1 1 1 符号表示逻辑代数中与以 “·”表示 图形表示 或真值表 A B Y 0 0 1 1 0 1 0 1 1 1 1 0 符号表示逻辑代数中与以 “+”表示 图形表示 非真值表 A Y 0 1 1 0 符号表示逻辑代数中与以 “$\overline{A}$”表示 图形表示]]></content>
+      <categories>
+        <category>数字电子技术基础笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>数字电子技术基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[自建云盘cloudreve]]></title>
     <url>%2F2019%2F08%2F27%2F%E9%83%A8%E7%BD%B2cloudreve%2F</url>
     <content type="text"><![CDATA[想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。 介绍 快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储 可限制单文件最大大小、MIMEType、文件后缀、用户可用容量 自定义主题配色 基于Aria2的离线下载 图片、音频、视频、文本、Markdown、Ofiice文档 在线预览 移动端全站响应式布局 文件、目录分享系统，可创建私有分享或公开分享链接 用户个人主页，可查看用户所有分享 多用户系统、用户组支持 初步完善的后台，方便管理 拖拽上传、分片上传、断点续传、下载限速（*实验性功能） 多上传策略，可为不同用户组分配不同策略 用户组基础权限设置、二步验证 WebDAV协议支持 安装需求 LNMP/AMP With PHP5.6+ curl、fileinfo、gd扩展 Composer 下载与安装因为Cloudreve使用Composer实现快捷的安装与配置，解压就可以用，所以我也不想麻烦了 官网 可以直接下载zip文件，解压成文件夹就可以了（github） 配置添加站点因为使用宝塔面板，所以配置十分简单 点击网站，添加站点 设置域名，根目录设置成刚才解压的文件夹就行了 访问http://你的域名/CloudreveInstaller/ 进入配置界面 配置伪静态如果提示 2 URL Rewrite 对于Nginx,需要配置一下伪静态 123456location / &#123; if (!-e $request_filename) &#123; rewrite ^(.*)$ /index.php?s=/$1 last; break; &#125;&#125; 设置读写权限 chomod a+w dirname 扩展 如果少扩展去宝塔里面安装就行 最后两项不用管 数据库在宝塔中创建一个数据库，这里直接写下刚才创建的各种信息就行 登录完成后会出现这个页面，你的管理界面和账户密码（进入管理员账户可以修改） OSS上传策略进入管理界面, 点击添加 然后添加信息 踩坑记录空间域名虽然他给的是http(s)://但是你要不也http:// 要不写https://，你如果直接写http(s)://域名，他会直接访问http(s)://域名，很明显，是没有http(s)协议的，所以oss的上传不会成功 OSS 配置需要在你的bucket的基础设置的跨域设置中创建规则 规则如下 应用上传策略可以在用户组中设置用户组的上传策略]]></content>
@@ -20,8 +32,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>搜索</tag>
       </tags>
   </entry>
@@ -59,8 +71,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>树形结构</tag>
       </tags>
   </entry>
@@ -72,8 +84,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -201,8 +213,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -213,8 +225,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>搜索</tag>
       </tags>
   </entry>
@@ -226,8 +238,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -238,8 +250,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
