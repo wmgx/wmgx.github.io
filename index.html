@@ -31,8 +31,8 @@
     root: '/',
     scheme: 'Gemini',
     version: '7.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    sidebar: {"position":"left","width":250,"display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
     fancybox: false,
     mediumzoom: false,
@@ -51,7 +51,7 @@
       path: 'search.xml'
     },
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"fadeIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -142,7 +142,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">李昊天的个人博客</p>
+        <p class="site-subtitle">要把所有的夜归还给星河，把所有的春光归还给疏疏篱落，把所有的慵慵沉迷与不前，归还给过去的我。明日之我，胸中有丘壑，立马振山河。</p>
       
   </div>
 
@@ -383,6 +383,7 @@
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -534,6 +535,7 @@
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -679,6 +681,7 @@
       
     </div>
 
+    
     
     
     
@@ -831,6 +834,7 @@ kde启动是真的很慢，但是进了桌面，加载完成之后，其实，�
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -978,6 +982,7 @@ kde启动是真的很慢，但是进了桌面，加载完成之后，其实，�
       
     </div>
 
+    
     
     
     
@@ -1133,6 +1138,7 @@ kde启动是真的很慢，但是进了桌面，加载完成之后，其实，�
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -1271,6 +1277,7 @@ sudo pacman -S nodejssudo pacman -S npm
       
     </div>
 
+    
     
     
     
@@ -1431,6 +1438,7 @@ sudo pacman -S nodejssudo pacman -S npm
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -1580,6 +1588,7 @@ sudo pacman -S nodejssudo pacman -S npm
     
     
     
+    
 
     <footer class="post-footer">
         <div class="post-eof"></div>
@@ -1717,6 +1726,7 @@ pacman -S  软件名   #安装pacman -Syu    #更新pacman -R 软件名    #移�
       
     </div>
 
+    
     
     
     
@@ -1894,6 +1904,13 @@ pacman -S  软件名   #安装pacman -Syu    #更新pacman -R 软件名    #移�
 
         </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -1927,11 +1944,6 @@ pacman -S  软件名   #安装pacman -Syu    #更新pacman -R 软件名    #移�
         
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
 
     
 
@@ -1941,10 +1953,15 @@ pacman -S  软件名   #安装pacman -Syu    #更新pacman -R 软件名    #移�
     
     
   
+    
+    
+  
   <script color='0,0,0' opacity='0.8' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
 
   <script src="/js/utils.js?v=7.3.0"></script>
   <script src="/js/motion.js?v=7.3.0"></script>
