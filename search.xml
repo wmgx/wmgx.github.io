@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[数据库安全性笔记]]></title>
-    <url>%2F2019%2F11%2F20%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[数据库安全性概述数据库的安全性是指保护数据库以防止不合法使用造成的数据泄露、更改或破坏。 不安全因素 非授权用户对数据库的恶意存取和破坏 数据库中重要或敏感的数据泄露 安全环境的脆弱性 安全标准 TCSEC（桔皮书） TCSEC/TDI（紫皮书） 从四个方面描述安全性级别划分的指标 安全策略 责任 保证 文档 级别划分 安全级别 定义 CC评级（EAL） A1 验证设计 EAL7 B3 安全域 EAL6 B2 结构化保护 EAL5 B1 标记安全保护 EAL4 C2 受控的存取保护 EAL3 C1 自主安全保护 EAL2 D 最小保护 数据库安全性控制用户身份鉴别 静态口令鉴别 动态口令鉴别 生物特征鉴别 智能卡鉴别 存取控制存取控制机制主要包括定义用户权限和合法权限检查两部分 自主存取控制方法SQL通过GRANT分配权限和REVOKE收回权限 用户权限由]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[windows下mongoDB 错误1053 服务无法启动]]></title>
     <url>%2F2019%2F10%2F29%2Fwindows%E4%B8%8BmongoDB-%E9%94%99%E8%AF%AF1053-%E6%9C%8D%E5%8A%A1%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%2F</url>
     <content type="text"><![CDATA[windows 安装完mongodb并配置好后启动服务时报错： 显示这个错误 在服务窗口中查看 复制所选的命令，在powersell(管理员)中执行 查看结果 12PS C:\WINDOWS\system32&gt; E:\mongdb\bin\mongod.exe --config "E:\mongdb\bin\mongod.cfg" --serviceUnrecognized option: snmp 我显示无效的参数snmp 查看配置文件，显示： 下面多了一行snmp: 删除后再执行显示正常了就]]></content>
@@ -68,8 +56,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>搜索</tag>
       </tags>
   </entry>
@@ -107,8 +95,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>树形结构</tag>
       </tags>
   </entry>
@@ -120,8 +108,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -198,8 +186,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>git</tag>
         <tag>经验</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -236,8 +224,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>git</tag>
         <tag>经验</tag>
+        <tag>git</tag>
         <tag>错误解决</tag>
       </tags>
   </entry>
@@ -249,8 +237,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +249,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -273,8 +261,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
         <tag>搜索</tag>
       </tags>
   </entry>
@@ -286,8 +274,8 @@
         <category>算法学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>学习笔记</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
