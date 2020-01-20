@@ -25,12 +25,69 @@
 <h2 id="在src-main-resources中建立mybatis-config-xml文件"><a href="#在src-main-resources中建立mybatis-config-xml文件" class="headerlink" title="在src/main/resources中建立mybatis-config.xml文件"></a>在src/main/resources中建立mybatis-config.xml文件</h2><p>mybatis-config.xml文件名随意</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;driver&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;url&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;username&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;password&#125;"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="编写-SqlSessionFactory（固定写法）"><a href="#编写-SqlSessionFactory（固定写法）" class="headerlink" title="编写  SqlSessionFactory（固定写法）"></a>编写  SqlSessionFactory（固定写法）</h2><h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String resource = <span class="string">"org/mybatis/example/mybatis-config.xml"</span>;</span><br><span class="line">InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br></pre></td></tr></table></figure>
-<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.util;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String resource = <span class="string">"mybaties_config.xml"</span>; <span class="comment">//前面的配置文件名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> InputStream inputStream;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            inputStream= Resources.getResourceAsStream(resource);</span><br><span class="line">            sqlSessionFactory=<span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title">getSqlSession</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.util;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String resource = <span class="string">"mybatis_config.xml"</span>; <span class="comment">//前面的配置文件名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> InputStream inputStream;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            inputStream= Resources.getResourceAsStream(resource);</span><br><span class="line">            sqlSessionFactory=<span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title">getSqlSession</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>实体类设置Getter Setter方法，其中的属性与数据库一致</p>
 <h3 id="Mapper实现接口（DAO）"><a href="#Mapper实现接口（DAO）" class="headerlink" title="Mapper实现接口（DAO）"></a>Mapper实现接口（DAO）</h3><h4 id="建立mappe接口"><a href="#建立mappe接口" class="headerlink" title="建立mappe接口"></a>建立mappe接口</h4><p>和DAO一样</p>
 <h4 id="建立配置文件（同目录）"><a href="#建立配置文件（同目录）" class="headerlink" title="建立配置文件（同目录）"></a>建立配置文件（同目录）</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;!--绑定对应的mapper接口--&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"top.wmgx.mapper.UserMapper"</span>&gt;</span><br><span class="line">&lt;!--    id为绑定接口的方法--&gt;</span><br><span class="line">&lt;!--    resultType为返回类型的实体类型(写全路径)--&gt;</span><br><span class="line">    &lt;select id=<span class="string">"getUserList"</span> resultType=<span class="string">"top.wmgx.pojo.User"</span>&gt;</span><br><span class="line">        select * from user</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="在mybatis-config-xml中添加此接口的映射"><a href="#在mybatis-config-xml中添加此接口的映射" class="headerlink" title="在mybatis-config.xml中添加此接口的映射"></a>在mybatis-config.xml中添加此接口的映射</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"top/wmgx/mapper/UserMapper.xml"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> top.wmgx.pojo.User;</span><br><span class="line"><span class="keyword">import</span> top.wmgx.util.MybatisUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserMapperTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//获取SqlSession对象</span></span><br><span class="line">        SqlSession sqlSession= (SqlSession) MybatisUtils.getSqlSession();</span><br><span class="line">        <span class="comment">//执行SQL</span></span><br><span class="line">        UserMapper mapper =sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        List&lt;User&gt; user=mapper.getUserList();</span><br><span class="line">        System.out.printf(user.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><h3 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h3><p>namespace中的包名要与mapper（Dao）接口中的包名一致</p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><h4 id="选择查询："><a href="#选择查询：" class="headerlink" title="选择查询："></a>选择查询：</h4><ul>
+<li>id：实现的方法</li>
+<li>resultType 返回值类型</li>
+<li>parameterType: 参数类型</li>
+</ul>
+<ol>
+<li>编写接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">User <span class="title">getUserById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getUser"</span> <span class="attr">resultType</span>=<span class="string">"top.wmgx.pojo.User"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">        select * from user where id =#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h3><ul>
+<li>需要用commit提交才可生效</li>
+</ul>
+<ol>
+<li><p>编写接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">addUser</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"addUser"</span> <span class="attr">parameterType</span>=<span class="string">"top.wmgx.pojo.User"</span>&gt;</span></span><br><span class="line">       insert into user (id,name,pwd) values(#&#123;id&#125;,#&#123;name&#125;,#&#123;pwd&#125;)</span><br><span class="line">   <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUserTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//获取SqlSession对象</span></span><br><span class="line">        SqlSession sqlSession= (SqlSession) MybatisUtils.getSqlSession();</span><br><span class="line">        UserMapper mapper =sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        User u = <span class="keyword">new</span> User(<span class="number">4</span>,<span class="string">"abc"</span>,<span class="string">"12345"</span>);</span><br><span class="line">        mapper.addUser(u);</span><br><span class="line">        sqlSession.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><ul>
+<li>需要用commit提交才可生效</li>
+</ul>
+<ol>
+<li><p>编写接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">updateUser</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateUser"</span> <span class="attr">parameterType</span>=<span class="string">"top.wmgx.pojo.User"</span>&gt;</span></span><br><span class="line">        update user set name= #&#123;name&#125;,pwd=#&#123;pwd&#125; where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>测试</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUserTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//获取SqlSession对象</span></span><br><span class="line">        SqlSession sqlSession= (SqlSession) MybatisUtils.getSqlSession();</span><br><span class="line">        UserMapper mapper =sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        User u = <span class="keyword">new</span> User(<span class="number">4</span>,<span class="string">"eas"</span>,<span class="string">"54321"</span>);</span><br><span class="line">        mapper.addUser(u);</span><br><span class="line">        sqlSession.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><ul>
+<li>需要用commit提交才可生效</li>
+</ul>
+<ol>
+<li><p>编写接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deleteUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"deleteUser"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">        delete  from user where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>mybatis</category>
@@ -783,9 +840,9 @@
         <category>linux</category>
       </categories>
       <tags>
+        <tag>VScode</tag>
         <tag>程序安装</tag>
         <tag>经验</tag>
-        <tag>VScode</tag>
       </tags>
   </entry>
   <entry>
@@ -942,8 +999,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>git</tag>
         <tag>经验</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -994,7 +1051,7 @@
     <title>deepin linux 下安装Typora</title>
     <url>/2019/07/29/deepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora/</url>
     <content><![CDATA[<p>一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span><span class="bash"> add Typora<span class="string">'s repository</span></span></span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span><span class="bash"> install typora</span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
 <p>这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。</p>
 <p>之后执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install dirmngr</span><br></pre></td></tr></table></figure>
@@ -1043,8 +1100,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>git</tag>
         <tag>经验</tag>
+        <tag>git</tag>
         <tag>错误解决</tag>
       </tags>
   </entry>
@@ -1073,152 +1130,6 @@
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序设计：算法和数据结构 笔记3——搜索</title>
-    <url>/2019/07/10/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
-<pre class="mermaid">graph LR
-A{搜索} -->B(线性搜索)
-A--> C(二分搜索)
-A--> E(散列)</pre>
-
-
-
-<h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
-<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
-<p><strong>思路</strong>：</p>
-<ol>
-<li>将整个数组（升序）作为搜索范围</li>
-<li>检查位于搜索范围正中央的元素</li>
-<li>如果一致则结束</li>
-<li>如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。</li>
-<li>如果到最后没找到，就返回特定值，表示未找到</li>
-</ol>
-<h2 id="散列法"><a href="#散列法" class="headerlink" title="散列法"></a>散列法</h2><p>在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。</p>
-<h1 id="线性搜索-1"><a href="#线性搜索-1" class="headerlink" title="线性搜索"></a>线性搜索</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c</strong></p>
-<p><strong>输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。</strong></p>
-<p><strong>输出：用1行输出C</strong></p>
-<p><strong>限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复</strong></p>
-<p><strong>输入示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">3</span><br><span class="line">3 4 1</span><br></pre></td></tr></table></figure>
-<p><strong>输出示例</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    A[n]=key;<span class="comment">//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果</span></span><br><span class="line">    <span class="keyword">while</span>(A[i]!=key) i++;</span><br><span class="line">    <span class="keyword">return</span> i!=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输出结果</strong></p>
-<p><img src="http://image.wmgx.top/img/20190724183930.png" alt="">因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$</p>
-<h1 id="二分搜索-1"><a href="#二分搜索-1" class="headerlink" title="二分搜索"></a>二分搜索</h1><p>对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">元素数</th>
-<th style="text-align:center">线性搜索</th>
-<th style="text-align:center">二分搜索</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">100</td>
-<td style="text-align:center">100</td>
-<td style="text-align:center">7</td>
-</tr>
-<tr>
-<td style="text-align:center">10000</td>
-<td style="text-align:center">10000</td>
-<td style="text-align:center">14</td>
-</tr>
-<tr>
-<td style="text-align:center">1000000</td>
-<td style="text-align:center">1000000</td>
-<td style="text-align:center">20</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>最坏情况下二分搜索的复杂度大概是$log_2n$</p>
-<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>同上题，假设输入有序数列</p>
-<h2 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">        mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(key==A[mid]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key&gt;A[mid])left=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>运行结果：</strong></p>
-<p><img src="http://image.wmgx.top/img/20190724183948.png" alt=""></p>
-<h1 id="散列法-1"><a href="#散列法-1" class="headerlink" title="散列法"></a>散列法</h1><p>不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值</p>
-<p>数组索引 a[0],a[1],a[2]……</p>
-<p>散列        a[key0],a[key1],a[key2]……</p>
-<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><ol>
-<li>通过散列函数在键值与值之间建立一个对应的函数关系Hash() </li>
-<li>存储位置可以通过 address=Hash(key) 的方式运算出来</li>
-<li>在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置</li>
-</ol>
-<h2 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h2><p>方法中步骤1中所涉及的函数关系叫做散列函数</p>
-<p>散列函数在使用的时候应该注意：</p>
-<ul>
-<li><p>简单，快速的可以计算出结果</p>
-</li>
-<li><p>在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值</p>
-</li>
-</ul>
-<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置</p>
-<p><strong>可以使用的运算符</strong></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">++</td>
-<td style="text-align:center">指向下一个迭代器</td>
-</tr>
-<tr>
-<td style="text-align:center">==，!=</td>
-<td style="text-align:center">判断两个迭代器指向位置是否相等</td>
-</tr>
-<tr>
-<td style="text-align:center">=</td>
-<td style="text-align:center">将运算符右侧迭代器赋值给左侧迭代器</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">返回该位置元素</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>容器函数</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数名</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">begin()</td>
-<td style="text-align:center">返回容器的开头元素</td>
-</tr>
-<tr>
-<td style="text-align:center">end()</td>
-<td style="text-align:center">返回容器的最后一个元素</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        v.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span>(iter=v.begin();iter!=v.end();iter++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://image.wmgx.top/img/20190724193948.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>算法学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>学习笔记</tag>
-        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -1486,6 +1397,152 @@ A--> E(散列)</pre>
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序设计：算法和数据结构 笔记3——搜索</title>
+    <url>/2019/07/10/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
+<pre class="mermaid">graph LR
+A{搜索} -->B(线性搜索)
+A--> C(二分搜索)
+A--> E(散列)</pre>
+
+
+
+<h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
+<p><strong>思路</strong>：</p>
+<ol>
+<li>将整个数组（升序）作为搜索范围</li>
+<li>检查位于搜索范围正中央的元素</li>
+<li>如果一致则结束</li>
+<li>如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。</li>
+<li>如果到最后没找到，就返回特定值，表示未找到</li>
+</ol>
+<h2 id="散列法"><a href="#散列法" class="headerlink" title="散列法"></a>散列法</h2><p>在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。</p>
+<h1 id="线性搜索-1"><a href="#线性搜索-1" class="headerlink" title="线性搜索"></a>线性搜索</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c</strong></p>
+<p><strong>输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。</strong></p>
+<p><strong>输出：用1行输出C</strong></p>
+<p><strong>限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复</strong></p>
+<p><strong>输入示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">3</span><br><span class="line">3 4 1</span><br></pre></td></tr></table></figure>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    A[n]=key;<span class="comment">//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果</span></span><br><span class="line">    <span class="keyword">while</span>(A[i]!=key) i++;</span><br><span class="line">    <span class="keyword">return</span> i!=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183930.png" alt="">因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$</p>
+<h1 id="二分搜索-1"><a href="#二分搜索-1" class="headerlink" title="二分搜索"></a>二分搜索</h1><p>对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元素数</th>
+<th style="text-align:center">线性搜索</th>
+<th style="text-align:center">二分搜索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最坏情况下二分搜索的复杂度大概是$log_2n$</p>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>同上题，假设输入有序数列</p>
+<h2 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">        mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(key==A[mid]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key&gt;A[mid])left=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183948.png" alt=""></p>
+<h1 id="散列法-1"><a href="#散列法-1" class="headerlink" title="散列法"></a>散列法</h1><p>不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值</p>
+<p>数组索引 a[0],a[1],a[2]……</p>
+<p>散列        a[key0],a[key1],a[key2]……</p>
+<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><ol>
+<li>通过散列函数在键值与值之间建立一个对应的函数关系Hash() </li>
+<li>存储位置可以通过 address=Hash(key) 的方式运算出来</li>
+<li>在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置</li>
+</ol>
+<h2 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h2><p>方法中步骤1中所涉及的函数关系叫做散列函数</p>
+<p>散列函数在使用的时候应该注意：</p>
+<ul>
+<li><p>简单，快速的可以计算出结果</p>
+</li>
+<li><p>在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值</p>
+</li>
+</ul>
+<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置</p>
+<p><strong>可以使用的运算符</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">++</td>
+<td style="text-align:center">指向下一个迭代器</td>
+</tr>
+<tr>
+<td style="text-align:center">==，!=</td>
+<td style="text-align:center">判断两个迭代器指向位置是否相等</td>
+</tr>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">将运算符右侧迭代器赋值给左侧迭代器</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">返回该位置元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>容器函数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">begin()</td>
+<td style="text-align:center">返回容器的开头元素</td>
+</tr>
+<tr>
+<td style="text-align:center">end()</td>
+<td style="text-align:center">返回容器的最后一个元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        v.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span>(iter=v.begin();iter!=v.end();iter++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190724193948.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>算法学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>学习笔记</tag>
+        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
