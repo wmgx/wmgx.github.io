@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.wmgx.top/2020/01/23/Mybatis%E7%BB%AD/</loc>
+    
+    <lastmod>2020-01-23T09:19:42.566Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.wmgx.top/2020/01/24/knn/</loc>
     
     <lastmod>2020-01-23T09:13:17.608Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://blog.wmgx.top/2020/01/20/%E7%AC%AC%E4%B8%80%E4%B8%AAmybatis/</loc>
     
     <lastmod>2020-01-23T08:53:09.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.wmgx.top/2020/01/23/Mybatis%E7%BB%AD/</loc>
-    
-    <lastmod>2020-01-23T08:53:02.469Z</lastmod>
     
   </url>
   
