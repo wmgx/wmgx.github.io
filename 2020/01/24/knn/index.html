@@ -60,32 +60,19 @@
   };
 </script>
 
-  <meta name="description" content="想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。 介绍 快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储 可限制单文件最大大小、MIMEType、文件后缀、用户可用容量 自定义主题">
-<meta name="keywords" content="cloudreve,搭建记录">
+  <meta name="description" content="百度百科邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是数据挖掘分类技术中最简单的方法之一。所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。 KNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者">
+<meta name="keywords" content="机器学习,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自建云盘cloudreve">
-<meta property="og:url" content="http://blog.wmgx.top/2019/08/27/部署cloudreve/index.html">
+<meta property="og:title" content="KNN(K近邻)">
+<meta property="og:url" content="http://blog.wmgx.top/2020/01/24/knn/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。 介绍 快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储 可限制单文件最大大小、MIMEType、文件后缀、用户可用容量 自定义主题">
+<meta property="og:description" content="百度百科邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是数据挖掘分类技术中最简单的方法之一。所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。 KNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826212721.png">
-<meta property="og:image" content="http://blog.wmgx.top/2019/08/27/部署cloudreve/部署cloudreve/1566826131490.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826213632.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826213247.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826213905.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826214632.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826214849.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826214935.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826215126.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826215556.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826215658.png">
-<meta property="og:image" content="http://image.wmgx.top/img/20190826220843.png">
-<meta property="og:updated_time" content="2019-08-26T14:23:24.554Z">
+<meta property="og:updated_time" content="2020-01-23T09:13:17.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自建云盘cloudreve">
-<meta name="twitter:description" content="想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。 介绍 快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储 可限制单文件最大大小、MIMEType、文件后缀、用户可用容量 自定义主题">
-<meta name="twitter:image" content="http://image.wmgx.top/img/20190826212721.png">
-  <link rel="canonical" href="http://blog.wmgx.top/2019/08/27/部署cloudreve/">
+<meta name="twitter:title" content="KNN(K近邻)">
+<meta name="twitter:description" content="百度百科邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是数据挖掘分类技术中最简单的方法之一。所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。 KNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者">
+  <link rel="canonical" href="http://blog.wmgx.top/2020/01/24/knn/">
 
 
 <script id="page.configurations">
@@ -94,7 +81,7 @@
   };
 </script>
 
-  <title>自建云盘cloudreve | </title>
+  <title>KNN(K近邻) | </title>
   
 
 
@@ -277,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2019/08/27/部署cloudreve/">
+    <link itemprop="mainEntityOfPage" href="http://blog.wmgx.top/2020/01/24/knn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李昊天(gx)">
@@ -291,7 +278,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">自建云盘cloudreve
+          <h1 class="post-title" itemprop="name headline">KNN(K近邻)
 
               
             
@@ -311,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2019-08-26 20:54:13 / 修改时间：14:23:24" itemprop="dateCreated datePublished" datetime="2019-08-26T20:54:13Z">2019-08-26</time>
+              <time title="创建时间：2020-01-23 16:57:44 / 修改时间：09:13:17" itemprop="dateCreated datePublished" datetime="2020-01-23T16:57:44Z">2020-01-23</time>
             </span>
           
             
@@ -326,7 +313,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/捣鼓记录/" itemprop="url" rel="index"><span itemprop="name">捣鼓记录</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
 
                 
                 
@@ -335,7 +322,7 @@
           
 
           
-            <span id="/2019/08/27/部署cloudreve/" class="post-meta-item leancloud_visitors" data-flag-title="自建云盘cloudreve">
+            <span id="/2020/01/24/knn/" class="post-meta-item leancloud_visitors" data-flag-title="KNN(K近邻)">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -356,8 +343,8 @@
       <span class="post-meta-item-text">评论数：</span>
     
   
-    <a href="/2019/08/27/部署cloudreve/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/部署cloudreve/" itemprop="commentCount"></span>
+    <a href="/2020/01/24/knn/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/24/knn/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -373,60 +360,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>想搭建一个云盘，虽然我也不知道为什么，之前搭建过一个nextcloud，很不错，除了速度（因为阿里云ECS学生套餐下行带宽只有2M），忽然发现cloudreve可以直接连接阿里云的oss，就想试试。</p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ul>
-<li>快速对接多家云存储，支持七牛、又拍云、阿里云OSS、AWS S3、Onedrive、自建远程服务器，当然，还有本地存储</li>
-<li>可限制单文件最大大小、MIMEType、文件后缀、用户可用容量</li>
-<li>自定义主题配色</li>
-<li>基于Aria2的离线下载</li>
-<li>图片、音频、视频、文本、Markdown、Ofiice文档 在线预览</li>
-<li>移动端全站响应式布局</li>
-<li>文件、目录分享系统，可创建私有分享或公开分享链接</li>
-<li>用户个人主页，可查看用户所有分享</li>
-<li>多用户系统、用户组支持</li>
-<li>初步完善的后台，方便管理</li>
-<li>拖拽上传、分片上传、断点续传、下载限速（*实验性功能）</li>
-<li>多上传策略，可为不同用户组分配不同策略</li>
-<li>用户组基础权限设置、二步验证</li>
-<li>WebDAV协议支持</li>
-</ul>
-<h1 id="安装需求"><a href="#安装需求" class="headerlink" title="安装需求"></a>安装需求</h1><ul>
-<li>LNMP/AMP With PHP5.6+</li>
-<li>curl、fileinfo、gd扩展</li>
-<li>Composer</li>
-</ul>
-<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>因为Cloudreve使用Composer实现快捷的安装与配置，解压就可以用，所以我也不想麻烦了</p>
-<p><a href="https://cloudreve.org/">官网</a> 可以直接下载zip文件，解压成文件夹就可以了（<a href="https://github.com/cloudreve/Cloudreve">github</a>）</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="添加站点"><a href="#添加站点" class="headerlink" title="添加站点"></a>添加站点</h2><p>因为使用宝塔面板，所以配置十分简单 </p>
-<p><img src="http://image.wmgx.top/img/20190826212721.png" alt=""></p>
-<p>点击网站，添加站点</p>
-<p><img src="部署cloudreve/1566826131490.png" alt="1566826131490"></p>
-<p>设置域名，根目录设置成刚才解压的文件夹就行了</p>
-<p>访问<a href="http://你的域名/CloudreveInstaller/">http://你的域名/CloudreveInstaller/</a> 进入配置界面</p>
-<h3 id="配置伪静态"><a href="#配置伪静态" class="headerlink" title="配置伪静态"></a>配置伪静态</h3><p>如果提示 <code>2 URL Rewrite</code></p>
-<p><img src="http://image.wmgx.top/img/20190826213632.png" alt=""></p>
-<p> 对于Nginx,需要配置一下伪静态</p>
-<p><img src="http://image.wmgx.top/img/20190826213247.png" alt=""></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if (!-e <span class="formula">$request_filename) &#123;</span></span><br><span class="line"><span class="formula">        rewrite ^(.*)$</span> /index.php?s=/<span class="formula">$1 last;</span></span><br><span class="line"><span class="formula">        break;</span></span><br><span class="line"><span class="formula">    &#125;</span></span><br><span class="line"><span class="formula">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置读写权限"><a href="#设置读写权限" class="headerlink" title="设置读写权限"></a>设置读写权限</h3><p><img src="http://image.wmgx.top/img/20190826213905.png" alt=""></p>
-<p><code>chomod a+w dirname</code></p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p> 如果少扩展去宝塔里面安装就行</p>
-<h3 id="最后两项"><a href="#最后两项" class="headerlink" title="最后两项"></a>最后两项</h3><p>不用管</p>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>在宝塔中创建一个数据库，这里直接写下刚才创建的各种信息就行</p>
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>完成后会出现这个页面，你的管理界面和账户密码（进入管理员账户可以修改）</p>
-<p><img src="http://image.wmgx.top/img/20190826214632.png" alt=""></p>
-<h2 id="OSS上传策略"><a href="#OSS上传策略" class="headerlink" title="OSS上传策略"></a>OSS上传策略</h2><p>进入管理界面, 点击添加</p>
-<p><img src="http://image.wmgx.top/img/20190826214849.png" alt=""></p>
-<p><img src="http://image.wmgx.top/img/20190826214935.png" alt=""></p>
-<p>然后添加信息</p>
-<p><img src="http://image.wmgx.top/img/20190826215126.png" alt=""></p>
-<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="空间域名"><a href="#空间域名" class="headerlink" title="空间域名"></a>空间域名</h3><p>虽然他给的是<code>http(s)://</code>但是你要不也<code>http://</code> 要不写<code>https://</code>，你如果直接写http(s)://域名，他会直接访问http(s)://域名，很明显，是没有http(s)协议的，所以oss的上传不会成功</p>
-<h3 id="OSS-配置"><a href="#OSS-配置" class="headerlink" title="OSS 配置"></a>OSS 配置</h3><p>需要在你的bucket的基础设置的跨域设置中创建规则</p>
-<p><img src="http://image.wmgx.top/img/20190826215556.png" alt=""></p>
-<p>规则如下</p>
-<p><img src="http://image.wmgx.top/img/20190826215658.png" alt=""></p>
-<h1 id="应用上传策略"><a href="#应用上传策略" class="headerlink" title="应用上传策略"></a>应用上传策略</h1><p>可以在用户组中设置用户组的上传策略</p>
-<p><img src="http://image.wmgx.top/img/20190826220843.png" alt=""></p>
+        <h1 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h1><p>邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是<a href="https://baike.baidu.com/item/数据挖掘/216477">数据挖掘</a>分类技术中最简单的方法之一。所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。</p>
+<p>KNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者几个样本的类别来决定待分样本所属的类别。 kNN方法在类别决策时，只与极少量的相邻样本有关。由于kNN方法主要靠周围有限的邻近的样本，而不是靠判别类域的方法来确定所属类别的，因此对于类域的交叉或重叠较多的待分样本集来说，kNN方法较其他方法更为适合。</p>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><ol>
+<li><p>简单，易于理解，易于实现，无需估计参数，无需训练；</p>
+</li>
+<li><p>适合对稀有事件进行分类；</p>
+</li>
+<li><p>特别适合于多分类问题(multi-modal,对象具有多个类别标签)， kNN比SVM的表现要好。</p>
+</li>
+</ol>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><p>该算法在分类时有个主要的不足是，当样本不平衡时，如一个类的样本容量很大，而其他类样本容量很小时，有可能导致当输入一个新样本时，该样本的K个邻居中大容量类的样本占多数。 该算法只计算“最近的”邻居样本，某一类的样本数量很大，那么或者这类样本并不接近目标样本，或者这类样本很靠近目标样本。无论怎样，数量并不能影响运行结果。</p>
+<p>该方法的另一个不足之处是计算量较大，因为对每一个待分类的文本都要计算它到全体已知样本的距离，才能求得它的K个最近邻点。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span>  Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KNNClass</span>:</span></span><br><span class="line">    <span class="comment">## 构造时传入K即比较周围的K个元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,k)</span>:</span></span><br><span class="line">        self.k=k</span><br><span class="line">        self._X_train=<span class="literal">None</span></span><br><span class="line">        self._Y_train=<span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">## 训练模型，传入特征与结果，要求其个数必须一样，我未加判断    </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self,X_train,Y_train)</span>:</span></span><br><span class="line">        self._X_train=X_train</span><br><span class="line">        self._Y_train=Y_train</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">	</span><br><span class="line">    <span class="comment">## 传入要推断的模型（可以多个），返回推断的结果</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self,X_predict)</span>:</span></span><br><span class="line">        <span class="comment">## 调用_predict方法，测试模型空间中的每一个</span></span><br><span class="line">        y_predict=[self._predict(x) <span class="keyword">for</span> x <span class="keyword">in</span> X_predict]</span><br><span class="line">        <span class="keyword">return</span> y_predict</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="comment">## 计算传入的一个模型的结果</span></span><br><span class="line">        <span class="comment">## 计算所有训练模型和传入模型的距离</span></span><br><span class="line">        distances =[sqrt(np.sum((x_train - x)**<span class="number">2</span>) )<span class="keyword">for</span> x_train <span class="keyword">in</span> self._X_train]</span><br><span class="line">        <span class="comment">## 排序下标</span></span><br><span class="line">        nearest = np.argsort(distances)</span><br><span class="line">        <span class="comment">## 取前K个元素（距离最短）</span></span><br><span class="line">        topK_y=[self._Y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:self.k]]</span><br><span class="line">        <span class="comment">## 统计最短的元素的各类个数</span></span><br><span class="line">        votes = Counter(topK_y)</span><br><span class="line">        <span class="comment">## 返回最多的那个为结果</span></span><br><span class="line">        <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"KNN(k=%d)"</span> %self.k</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -463,15 +409,15 @@
           
         
         <div class="post-tags">
-            <a href="/tags/cloudreve/" rel="tag"># cloudreve</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/搭建记录/" rel="tag"># 搭建记录</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/19/程序设计：算法和数据结构-笔记7：二叉搜索树/" rel="next" title="程序设计：算法和数据结构-笔记7-二叉搜索树">
-                <i class="fa fa-chevron-left"></i> 程序设计：算法和数据结构-笔记7-二叉搜索树
+              <a href="/2020/01/23/Mybatis续/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -479,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/11/数字电子技术基础笔记1/" rel="prev" title="数字电子技术基础笔记1">
-                数字电子技术基础笔记1 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -709,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装需求"><span class="nav-number">2.</span> <span class="nav-text">安装需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载与安装"><span class="nav-number">3.</span> <span class="nav-text">下载与安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加站点"><span class="nav-number">4.1.</span> <span class="nav-text">添加站点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置伪静态"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置伪静态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置读写权限"><span class="nav-number">4.1.2.</span> <span class="nav-text">设置读写权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number">4.1.3.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后两项"><span class="nav-number">4.1.4.</span> <span class="nav-text">最后两项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">4.1.5.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">4.1.6.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSS上传策略"><span class="nav-number">4.2.</span> <span class="nav-text">OSS上传策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#踩坑记录"><span class="nav-number">4.3.</span> <span class="nav-text">踩坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空间域名"><span class="nav-number">4.3.1.</span> <span class="nav-text">空间域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSS-配置"><span class="nav-number">4.3.2.</span> <span class="nav-text">OSS 配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用上传策略"><span class="nav-number">5.</span> <span class="nav-text">应用上传策略</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#百度百科"><span class="nav-number">1.</span> <span class="nav-text">百度百科</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缺点"><span class="nav-number">3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>KNN(K近邻)</title>
+    <url>/2020/01/24/knn/</url>
+    <content><![CDATA[<h1 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h1><p>邻近算法，或者说K最近邻(kNN，k-NearestNeighbor)分类算法是<a href="https://baike.baidu.com/item/数据挖掘/216477">数据挖掘</a>分类技术中最简单的方法之一。所谓K最近邻，就是k个最近的邻居的意思，说的是每个样本都可以用它最接近的k个邻居来代表。</p>
+<p>KNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者几个样本的类别来决定待分样本所属的类别。 kNN方法在类别决策时，只与极少量的相邻样本有关。由于kNN方法主要靠周围有限的邻近的样本，而不是靠判别类域的方法来确定所属类别的，因此对于类域的交叉或重叠较多的待分样本集来说，kNN方法较其他方法更为适合。</p>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><ol>
+<li><p>简单，易于理解，易于实现，无需估计参数，无需训练；</p>
+</li>
+<li><p>适合对稀有事件进行分类；</p>
+</li>
+<li><p>特别适合于多分类问题(multi-modal,对象具有多个类别标签)， kNN比SVM的表现要好。</p>
+</li>
+</ol>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><p>该算法在分类时有个主要的不足是，当样本不平衡时，如一个类的样本容量很大，而其他类样本容量很小时，有可能导致当输入一个新样本时，该样本的K个邻居中大容量类的样本占多数。 该算法只计算“最近的”邻居样本，某一类的样本数量很大，那么或者这类样本并不接近目标样本，或者这类样本很靠近目标样本。无论怎样，数量并不能影响运行结果。</p>
+<p>该方法的另一个不足之处是计算量较大，因为对每一个待分类的文本都要计算它到全体已知样本的距离，才能求得它的K个最近邻点。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span>  Counter</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KNNClass</span>:</span></span><br><span class="line">    <span class="comment">## 构造时传入K即比较周围的K个元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,k)</span>:</span></span><br><span class="line">        self.k=k</span><br><span class="line">        self._X_train=<span class="literal">None</span></span><br><span class="line">        self._Y_train=<span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">## 训练模型，传入特征与结果，要求其个数必须一样，我未加判断    </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self,X_train,Y_train)</span>:</span></span><br><span class="line">        self._X_train=X_train</span><br><span class="line">        self._Y_train=Y_train</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">	</span><br><span class="line">    <span class="comment">## 传入要推断的模型（可以多个），返回推断的结果</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self,X_predict)</span>:</span></span><br><span class="line">        <span class="comment">## 调用_predict方法，测试模型空间中的每一个</span></span><br><span class="line">        y_predict=[self._predict(x) <span class="keyword">for</span> x <span class="keyword">in</span> X_predict]</span><br><span class="line">        <span class="keyword">return</span> y_predict</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_predict</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="comment">## 计算传入的一个模型的结果</span></span><br><span class="line">        <span class="comment">## 计算所有训练模型和传入模型的距离</span></span><br><span class="line">        distances =[sqrt(np.sum((x_train - x)**<span class="number">2</span>) )<span class="keyword">for</span> x_train <span class="keyword">in</span> self._X_train]</span><br><span class="line">        <span class="comment">## 排序下标</span></span><br><span class="line">        nearest = np.argsort(distances)</span><br><span class="line">        <span class="comment">## 取前K个元素（距离最短）</span></span><br><span class="line">        topK_y=[self._Y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> nearest[:self.k]]</span><br><span class="line">        <span class="comment">## 统计最短的元素的各类个数</span></span><br><span class="line">        votes = Counter(topK_y)</span><br><span class="line">        <span class="comment">## 返回最多的那个为结果</span></span><br><span class="line">        <span class="keyword">return</span> votes.most_common(<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"KNN(k=%d)"</span> %self.k</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/2020/01/23/Mybatis%E7%BB%AD/</url>
     <content><![CDATA[<h1 id="配置解析"><a href="#配置解析" class="headerlink" title="配置解析"></a>配置解析</h1><h2 id="核心配置文件"><a href="#核心配置文件" class="headerlink" title="核心配置文件"></a>核心配置文件</h2><p><strong>依序</strong></p>
@@ -991,9 +1016,9 @@
         <category>linux</category>
       </categories>
       <tags>
+        <tag>VScode</tag>
         <tag>程序安装</tag>
         <tag>经验</tag>
-        <tag>VScode</tag>
       </tags>
   </entry>
   <entry>
@@ -1202,7 +1227,7 @@
     <title>deepin linux 下安装Typora</title>
     <url>/2019/07/29/deepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora/</url>
     <content><![CDATA[<p>一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span><span class="bash"> add Typora<span class="string">'s repository</span></span></span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span><span class="bash"> install typora</span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
 <p>这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。</p>
 <p>之后执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install dirmngr</span><br></pre></td></tr></table></figure>
