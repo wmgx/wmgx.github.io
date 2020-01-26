@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://blog.wmgx.top/2020/01/23/Mybatis%E7%BB%AD/</loc>
-    <lastmod>2020-01-23</lastmod>
+    <loc>http://blog.wmgx.top/2020/01/27/manjaro-kde%E6%A1%8C%E9%9D%A2%E5%BD%95%E5%B1%8F%E9%97%AA%E7%83%81/</loc>
+    <lastmod>2020-01-26</lastmod>
+  </url>  <url>
+    <loc>http://blog.wmgx.top/2020/01/26/%E7%AC%AC%E4%B8%80%E4%B8%AAvue/</loc>
+    <lastmod>2020-01-25</lastmod>
   </url>  <url>
     <loc>http://blog.wmgx.top/2020/01/24/knn/</loc>
+    <lastmod>2020-01-23</lastmod>
+  </url>  <url>
+    <loc>http://blog.wmgx.top/2020/01/23/Mybatis%E7%BB%AD/</loc>
     <lastmod>2020-01-23</lastmod>
   </url>  <url>
     <loc>http://blog.wmgx.top/2020/01/20/%E7%AC%AC%E4%B8%80%E4%B8%AAmybatis/</loc>
