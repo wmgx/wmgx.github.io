@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>spring MVC 续</title>
+    <url>/2020/02/09/springmvc2/</url>
+    <content><![CDATA[<h1 id="RequsetMapping"><a href="#RequsetMapping" class="headerlink" title="@RequsetMapping"></a>@RequsetMapping</h1><p>@RequestMapping注解用于映射url到控制器类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="comment">//@RequestMapping("/a")</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">//访问地址为(http://localhost:8081/a1)</span></span><br><span class="line">    <span class="comment">//若类前面有@RequestMapping("/a")访问地址为(http://localhost:8081/a/a1)</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/a1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"msg"</span>,<span class="string">"ok"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参数接收"><a href="#参数接收" class="headerlink" title="参数接收"></a>参数接收</h2><h3 id="1-普通参数"><a href="#1-普通参数" class="headerlink" title="1. 普通参数"></a>1. 普通参数</h3><p><a href="http://localhost:8081/a1?username=admin&amp;pwd=123456">http://localhost:8081/a1?username=admin&amp;pwd=123456</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">//名称一致的可以直接写</span></span><br><span class="line">    <span class="comment">//名称不一致的加@RequestParam("pwd") 注解</span></span><br><span class="line">    <span class="comment">//建议一致或者不一致都写@RequestParam() </span></span><br><span class="line">     <span class="meta">@RequestMapping</span>(<span class="string">"/a1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(String name, @RequestParam(<span class="string">"pwd"</span>)</span> String password)</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"\n"</span>+password);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-接受方也可以是对象"><a href="#2-接受方也可以是对象" class="headerlink" title="2. 接受方也可以是对象"></a>2. 接受方也可以是对象</h3><p>前提，对象的属性和前端必须保持一致提供set方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.Model;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String pwd;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPwd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPwd</span><span class="params">(String pwd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", pwd='"</span> + pwd + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">//可以直接写User user 对应属性会被设置进去，没有的会为null</span></span><br><span class="line">     <span class="meta">@RequestMapping</span>(<span class="string">"/a1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-HttpServletRequest"><a href="#3-HttpServletRequest" class="headerlink" title="3. HttpServletRequest"></a>3. HttpServletRequest</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">//可以直接写User user 对应属性会被设置进去，没有的会为null</span></span><br><span class="line">     <span class="meta">@RequestMapping</span>(<span class="string">"/a1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        String name = request.getParameter(<span class="string">"name"</span>);  			String pwd = request.getParameter(<span class="string">"pwd"</span>);</span><br><span class="line">		System.out.println(name+<span class="string">"\n"</span>+password);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-RestFul"><a href="#4-RestFul" class="headerlink" title="4. RestFul"></a>4. RestFul</h3><p>参数在路径中，上方的链接变成了</p>
+<p><a href="http://localhost:8081/a1/admin/123456">http://localhost:8081/a1/admin/123456</a></p>
+<blockquote>
+<p> url含有中文名称时，因为编码问题，无法进行映射，需要修改tomcat下的conf文件夹下的server.xml中的URIEncoding=”UTF-8”</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 限制get请求并设置返回编码为utf-8</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/a1/&#123;name&#125;/&#123;pwd&#125;"</span>, method = RequestMethod.GET, produces = &#123;<span class="string">"application/json;charset=UTF-8"</span>&#125;)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(@PathVariable String name, @PathVariable String pwd)</span></span>&#123;</span><br><span class="line">		System.out.println(name+<span class="string">"\n"</span>+pwd);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-JSON方式"><a href="#5-JSON方式" class="headerlink" title="5. JSON方式"></a>5. JSON方式</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind --&gt;</span></span><br><span class="line">  </span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要导入jackson的支持，会被自动装配的配置项 <strong><mvc:annotation-driven /></strong> 装配</p>
+<p>&gt;<br>&gt;</p>
+<blockquote>
+<p>前端提示：HTTP Status 415 – 不支持的媒体类型</p>
+<p>后端提示：Content type ‘application/json’ not supported]</p>
+</blockquote>
+<p><strong>前端发送的Header前面需要加上Content-Type:”application/json”</strong></p>
+<blockquote>
+<p>前端提示：HTTP Status 415 – 不支持的媒体类型</p>
+<p>​                    描述源服务器拒绝服务请求，因为有效负载的格式在目标资源上此方法不支持。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/a"</span>, method = &#123;RequestMethod.POST&#125;,  consumes = &#123;<span class="string">"application/json"</span>&#125;)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(@RequestBody User user)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user.toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>consumes设置后，只处理Content-Type:“application/json”</strong>的数据</p>
+<h2 id="组合注解"><a href="#组合注解" class="headerlink" title="组合注解"></a>组合注解</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"><span class="meta">@PatchMapping</span></span><br></pre></td></tr></table></figure>
+<p>@GetMapping 等同于 @RequestMapping(method =RequestMethod.GET)</p>
+<h1 id="转发与重定向"><a href="#转发与重定向" class="headerlink" title="转发与重定向"></a>转发与重定向</h1><ul>
+<li>在视图解析器中，默认就是转发</li>
+<li>重定向的话 return “redirect:index.jsp”或者return “redirect:test1”另一个RequestMapping</li>
+</ul>
+<h1 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在请求处理的方法之前执行</span></span><br><span class="line">    <span class="comment">//如果返回true执行下一个拦截器</span></span><br><span class="line">    <span class="comment">//如果返回false就不执行下一个拦截器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"------------处理前------------"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">//true继续向下走</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在请求处理方法执行之后执行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"------------处理后------------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在dispatcherServlet处理后执行,做清理工作.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"------------清理------------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--关于拦截器的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--/** 包括路径及其子路径--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--/* 拦截的是/一级的--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--bean配置的就是拦截器--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"top.wmgx.interceptor.MyInterceptor"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h2 id="前端设置"><a href="#前端设置" class="headerlink" title="前端设置"></a>前端设置</h2><p><strong>enctype=”multipart/form-data”</strong> </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文件上传--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--servlet-api导入高版本的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="配置sping配置文件"><a href="#配置sping配置文件" class="headerlink" title="配置sping配置文件"></a>配置sping配置文件</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文件上传配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span>  <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 请求的编码格式，必须和jSP的pageEncoding属性一致，以便正确读取表单的内容，默认为ISO-8859-1 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"utf-8"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上传文件大小上限，单位为字节（10485760=10M） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"10485760"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxInMemorySize"</span> <span class="attr">value</span>=<span class="string">"40960"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>multipartResolver</strong> 命名一定是这个</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ul>
+<li><strong>String getOriginalFilename()：获取上传文件的原名</strong></li>
+<li><strong>InputStream getInputStream()：获取文件流</strong></li>
+<li><strong>void transferTo(File dest)：将上传文件保存到一个目录文件中</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@RequestParam("file") 将得到的文件封装成CommonsMultipartFile 对象</span></span><br><span class="line">   <span class="comment">//批量上传CommonsMultipartFile则为数组即可</span></span><br><span class="line">   <span class="meta">@RequestMapping</span>(<span class="string">"/upload"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">Upload</span><span class="params">(@RequestParam(<span class="string">"file"</span>)</span> CommonsMultipartFile file , HttpServletRequest request) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">       <span class="comment">//获取文件名 : file.getOriginalFilename();</span></span><br><span class="line">       String uploadFileName = file.getOriginalFilename();</span><br><span class="line">       <span class="comment">//如果文件名为空，直接回到首页！</span></span><br><span class="line">       <span class="keyword">if</span> (<span class="string">""</span>.equals(uploadFileName))&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"redirect:/index.jsp"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"上传文件名 : "</span>+uploadFileName);</span><br><span class="line">       <span class="comment">//上传路径保存设置</span></span><br><span class="line">       String path = request.getServletContext().getRealPath(<span class="string">"/upload"</span>);</span><br><span class="line">       <span class="comment">//如果路径不存在，创建一个</span></span><br><span class="line">       File realPath = <span class="keyword">new</span> File(path);</span><br><span class="line">       <span class="keyword">if</span> (!realPath.exists())&#123;</span><br><span class="line">           realPath.mkdir();</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"上传文件保存地址："</span>+realPath);</span><br><span class="line">       InputStream is = file.getInputStream(); <span class="comment">//文件输入流</span></span><br><span class="line">       OutputStream os = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(realPath,uploadFileName)); <span class="comment">//文件输出流</span></span><br><span class="line">       <span class="comment">//读取写出</span></span><br><span class="line">       <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">       <span class="keyword">while</span> ((len=is.read(buffer))!=-<span class="number">1</span>)&#123;</span><br><span class="line">           os.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">           os.flush();</span><br><span class="line">       &#125;</span><br><span class="line">       os.close();</span><br><span class="line">       is.close();</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"redirect:/index.jsp"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>利用file。Transto</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 采用file.Transto 来保存上传的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/upload"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String  <span class="title">upload</span><span class="params">(@RequestParam(<span class="string">"file"</span>)</span> CommonsMultipartFile file, HttpServletRequest request) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//上传路径保存设置</span></span><br><span class="line">    String path = request.getServletContext().getRealPath(<span class="string">"/upload"</span>);</span><br><span class="line">    File realPath = <span class="keyword">new</span> File(path);</span><br><span class="line">    <span class="keyword">if</span> (!realPath.exists())&#123;</span><br><span class="line">        realPath.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//上传文件地址</span></span><br><span class="line">    System.out.println(<span class="string">"上传文件保存地址："</span>+realPath);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过CommonsMultipartFile的方法直接写文件（注意这个时候）</span></span><br><span class="line">    file.transferTo(<span class="keyword">new</span> File(realPath +<span class="string">"/"</span>+ file.getOriginalFilename()));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:/index.jsp"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/download"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">downloads</span><span class="params">(@RequestParam(<span class="string">"file"</span>)</span> String fileName,HttpServletResponse response , HttpServletRequest request) <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">       <span class="comment">//要下载的图片地址</span></span><br><span class="line">       String  path = request.getServletContext().getRealPath(<span class="string">"/upload"</span>);</span><br><span class="line">       <span class="comment">//1、设置response 响应头</span></span><br><span class="line">       response.reset(); <span class="comment">//设置页面不缓存,清空buffer</span></span><br><span class="line">       response.setCharacterEncoding(<span class="string">"UTF-8"</span>); <span class="comment">//字符编码</span></span><br><span class="line">       response.setContentType(<span class="string">"multipart/form-data"</span>); <span class="comment">//二进制传输数据</span></span><br><span class="line">       <span class="comment">//设置响应头</span></span><br><span class="line">       response.setHeader(<span class="string">"Content-Disposition"</span>,</span><br><span class="line">               <span class="string">"attachment;fileName="</span>+ URLEncoder.encode(fileName, <span class="string">"UTF-8"</span>));</span><br><span class="line">       File file = <span class="keyword">new</span> File(path,fileName);</span><br><span class="line">       <span class="comment">//2、 读取文件--输入流</span></span><br><span class="line">       InputStream input=<span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">       <span class="comment">//3、 写出文件--输出流</span></span><br><span class="line">       OutputStream out = response.getOutputStream();</span><br><span class="line">       <span class="keyword">byte</span>[] buff =<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">       <span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">       <span class="comment">//4、执行 写出操作</span></span><br><span class="line">       <span class="keyword">while</span>((index= input.read(buff))!= -<span class="number">1</span>)&#123;</span><br><span class="line">           out.write(buff, <span class="number">0</span>, index);</span><br><span class="line">           out.flush();</span><br><span class="line">       &#125;</span><br><span class="line">       out.close();</span><br><span class="line">       input.close();</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>springMVC</category>
+      </categories>
+      <tags>
+        <tag>sptingMVC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring MVC</title>
+    <url>/2020/02/09/springmvc/</url>
+    <content><![CDATA[<h1 id="1-导入基础支持"><a href="#1-导入基础支持" class="headerlink" title="1. 导入基础支持"></a>1. 导入基础支持</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="2-将相关jar包配置到web环境"><a href="#2-将相关jar包配置到web环境" class="headerlink" title="2. 将相关jar包配置到web环境"></a>2. 将相关jar包配置到web环境</h1><p><img src="https://image.wmgx.top/img/20200209062505.png" alt=""></p>
+<h1 id="3-配置web-XML"><a href="#3-配置web-XML" class="headerlink" title="3. 配置web.XML"></a>3. 配置web.XML</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">"4.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--注册Spring的servlet--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--通过初始化参数指定SpringMVC配置文件的位置，进行关联--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc-servlet.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 启动顺序，设置为最早启动 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--所有请求都会被springmvc拦截 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--乱码过滤器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="4-配置Spring-MVC配置文件"><a href="#4-配置Spring-MVC配置文件" class="headerlink" title="4. 配置Spring MVC配置文件"></a>4. 配置Spring MVC配置文件</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">        https://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="tag"><span class="string">        https://www.springframework.org/schema/mvc/spring-mvc.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 自动扫描包，让指定包下的注解生效,由IOC容器统一管理 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"top.wmgx.controller"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 让Spring MVC不处理静态资源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    开启mvc注解驱动支持</span></span><br><span class="line"><span class="comment">        在spring中采用@RequestMapping注解来完成映射关系</span></span><br><span class="line"><span class="comment">       	必须向上下文中注册DefaultAnnotationHandlerMapping</span></span><br><span class="line"><span class="comment">        和一个AnnotationMethodHandlerAdapter实例</span></span><br><span class="line"><span class="comment">        这两个实例分别在类级别和方法级别处理。</span></span><br><span class="line"><span class="comment">        而annotation-driven配置自动完成上述两个实例的注入。</span></span><br><span class="line"><span class="comment">     --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 视图解析器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">id</span>=<span class="string">"internalResourceViewResolver"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 前缀 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 后缀 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="5-创建Controller"><a href="#5-创建Controller" class="headerlink" title="5. 创建Controller"></a>5. 创建Controller</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="comment">//@RequestMapping("/a")</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="comment">//访问地址为(http://localhost:8081/a1)</span></span><br><span class="line">    <span class="comment">//若类前面有@RequestMapping("/a")访问地址为(http://localhost:8081/a/a1)</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/a1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"msg"</span>,<span class="string">"ok"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="以下为非注解实现"><a href="#以下为非注解实现" class="headerlink" title="以下为非注解实现"></a>以下为非注解实现</h1><h1 id="1，2-3相同"><a href="#1，2-3相同" class="headerlink" title="1，2,3相同"></a>1，2,3相同</h1><h1 id="4-创建-Cotroller"><a href="#4-创建-Cotroller" class="headerlink" title="4. 创建 Cotroller"></a>4. 创建 Cotroller</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.wmgx.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.mvc.Controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意：这里我们先导入Controller接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">implements</span> <span class="title">Controller</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">handleRequest</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//ModelAndView 模型和视图</span></span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.addObject(<span class="string">"msg"</span>,<span class="string">"ok!"</span>);</span><br><span class="line">        <span class="comment">//封装要跳转的视图，放在ModelAndView中</span></span><br><span class="line">        mv.setViewName(<span class="string">"test"</span>);<span class="comment">//转跳位置</span></span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="5-配置Spring-MVC配置文件"><a href="#5-配置Spring-MVC配置文件" class="headerlink" title="5. 配置Spring MVC配置文件"></a>5. 配置Spring MVC配置文件</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">--!添加</span> 处理映射器<span class="attr">--</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">--!添加</span> 处理器适配器<span class="attr">--</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--视图解析器:DispatcherServlet给他的ModelAndView--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> <span class="attr">id</span>=<span class="string">"InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!--前缀--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span>/&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!--后缀--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--id 请求位置，class是哪个类--&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"/a1"</span> <span class="attr">class</span>=<span class="string">"top.wmgx.controller.Hello"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>springMVC</category>
+      </categories>
+      <tags>
+        <tag>springMVC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一个spring</title>
     <url>/2020/02/02/%E7%AC%AC%E4%B8%80%E4%B8%AAspring/</url>
     <content><![CDATA[<h1 id="1-新建maven-导入依赖"><a href="#1-新建maven-导入依赖" class="headerlink" title="1. 新建maven 导入依赖"></a>1. 新建maven 导入依赖</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1384,8 +1463,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>经验</tag>
         <tag>git</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1436,7 +1515,7 @@
     <title>deepin linux 下安装Typora</title>
     <url>/2019/07/29/deepin%20linux%20%E4%B8%8B%E5%AE%89%E8%A3%85Typora/</url>
     <content><![CDATA[<p>一直喜欢Typora，刚刚装了deepin Linux ，打算安装一下，但是照着官网给出的教程，却总是报错</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span> add Typora's repository</span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span> install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"><span class="meta">#</span><span class="bash"> add Typora<span class="string">'s repository</span></span></span><br><span class="line">sudo add-apt-repository 'deb https://typora.io/linux ./'</span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta">#</span><span class="bash"> install typora</span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
 <p>这是官网给出的教程，但是在第一步就报错，报了两个文件缺失的错误，当时没有截下图来。</p>
 <p>之后执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install dirmngr</span><br></pre></td></tr></table></figure>
@@ -1485,8 +1564,8 @@
       </categories>
       <tags>
         <tag>程序安装</tag>
-        <tag>经验</tag>
         <tag>git</tag>
+        <tag>经验</tag>
         <tag>错误解决</tag>
       </tags>
   </entry>
@@ -1515,152 +1594,6 @@
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序设计：算法和数据结构 笔记3——搜索</title>
-    <url>/2019/07/10/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
-<pre class="mermaid">graph LR
-A{搜索} -->B(线性搜索)
-A--> C(二分搜索)
-A--> E(散列)</pre>
-
-
-
-<h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
-<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
-<p><strong>思路</strong>：</p>
-<ol>
-<li>将整个数组（升序）作为搜索范围</li>
-<li>检查位于搜索范围正中央的元素</li>
-<li>如果一致则结束</li>
-<li>如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。</li>
-<li>如果到最后没找到，就返回特定值，表示未找到</li>
-</ol>
-<h2 id="散列法"><a href="#散列法" class="headerlink" title="散列法"></a>散列法</h2><p>在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。</p>
-<h1 id="线性搜索-1"><a href="#线性搜索-1" class="headerlink" title="线性搜索"></a>线性搜索</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c</strong></p>
-<p><strong>输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。</strong></p>
-<p><strong>输出：用1行输出C</strong></p>
-<p><strong>限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复</strong></p>
-<p><strong>输入示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">3</span><br><span class="line">3 4 1</span><br></pre></td></tr></table></figure>
-<p><strong>输出示例</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    A[n]=key;<span class="comment">//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果</span></span><br><span class="line">    <span class="keyword">while</span>(A[i]!=key) i++;</span><br><span class="line">    <span class="keyword">return</span> i!=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输出结果</strong></p>
-<p><img src="http://image.wmgx.top/img/20190724183930.png" alt="">因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$</p>
-<h1 id="二分搜索-1"><a href="#二分搜索-1" class="headerlink" title="二分搜索"></a>二分搜索</h1><p>对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">元素数</th>
-<th style="text-align:center">线性搜索</th>
-<th style="text-align:center">二分搜索</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">100</td>
-<td style="text-align:center">100</td>
-<td style="text-align:center">7</td>
-</tr>
-<tr>
-<td style="text-align:center">10000</td>
-<td style="text-align:center">10000</td>
-<td style="text-align:center">14</td>
-</tr>
-<tr>
-<td style="text-align:center">1000000</td>
-<td style="text-align:center">1000000</td>
-<td style="text-align:center">20</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>最坏情况下二分搜索的复杂度大概是$log_2n$</p>
-<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>同上题，假设输入有序数列</p>
-<h2 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">        mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(key==A[mid]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key&gt;A[mid])left=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>运行结果：</strong></p>
-<p><img src="http://image.wmgx.top/img/20190724183948.png" alt=""></p>
-<h1 id="散列法-1"><a href="#散列法-1" class="headerlink" title="散列法"></a>散列法</h1><p>不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值</p>
-<p>数组索引 a[0],a[1],a[2]……</p>
-<p>散列        a[key0],a[key1],a[key2]……</p>
-<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><ol>
-<li>通过散列函数在键值与值之间建立一个对应的函数关系Hash() </li>
-<li>存储位置可以通过 address=Hash(key) 的方式运算出来</li>
-<li>在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置</li>
-</ol>
-<h2 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h2><p>方法中步骤1中所涉及的函数关系叫做散列函数</p>
-<p>散列函数在使用的时候应该注意：</p>
-<ul>
-<li><p>简单，快速的可以计算出结果</p>
-</li>
-<li><p>在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值</p>
-</li>
-</ul>
-<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置</p>
-<p><strong>可以使用的运算符</strong></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">++</td>
-<td style="text-align:center">指向下一个迭代器</td>
-</tr>
-<tr>
-<td style="text-align:center">==，!=</td>
-<td style="text-align:center">判断两个迭代器指向位置是否相等</td>
-</tr>
-<tr>
-<td style="text-align:center">=</td>
-<td style="text-align:center">将运算符右侧迭代器赋值给左侧迭代器</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">返回该位置元素</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>容器函数</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数名</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">begin()</td>
-<td style="text-align:center">返回容器的开头元素</td>
-</tr>
-<tr>
-<td style="text-align:center">end()</td>
-<td style="text-align:center">返回容器的最后一个元素</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        v.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span>(iter=v.begin();iter!=v.end();iter++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://image.wmgx.top/img/20190724193948.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>算法学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>学习笔记</tag>
-        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -1928,6 +1861,152 @@ A--> E(散列)</pre>
       <tags>
         <tag>算法</tag>
         <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序设计：算法和数据结构 笔记3——搜索</title>
+    <url>/2019/07/10/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%9A%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AC%94%E8%AE%B03-%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>搜索是从数据集合中找出目标元素的处理。</p>
+<pre class="mermaid">graph LR
+A{搜索} -->B(线性搜索)
+A--> C(二分搜索)
+A--> E(散列)</pre>
+
+
+
+<h2 id="线性搜索"><a href="#线性搜索" class="headerlink" title="线性搜索"></a>线性搜索</h2><p>线性搜索是从数组开头顺次访问个元素，检查给该元素是否与目标值相等。相等则返回元素位置并结束搜索。如果检查完数组还没有发现目标值，则返回一个特殊值来说明。<strong>线性搜索的算法效率很低</strong>，但适用于任何形式的数据。</p>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法可以利用数据的大小进行高速搜索。二分搜索的前提是 <strong>已经排序</strong>。</p>
+<p><strong>思路</strong>：</p>
+<ol>
+<li>将整个数组（升序）作为搜索范围</li>
+<li>检查位于搜索范围正中央的元素</li>
+<li>如果一致则结束</li>
+<li>如果不一致则比较大小，小于的话，以前半部分为搜索范围执行第二步。否则以后半部分为范围执行。</li>
+<li>如果到最后没找到，就返回特定值，表示未找到</li>
+</ol>
+<h2 id="散列法"><a href="#散列法" class="headerlink" title="散列法"></a>散列法</h2><p>在散列法中，各元素的存储位置由散列函数决定。散列既是一种数据结构，同时也是一种使用散列表的算法。只需要将关键字（key）带入就可得到对应位置。搜索效率很高。</p>
+<h1 id="线性搜索-1"><a href="#线性搜索-1" class="headerlink" title="线性搜索"></a>线性搜索</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><strong>请编写一个程序，输入包含 n 个整数的数列 s 以及包含 q 个不重复整数数列 T ，输出既包含于 T 又包含于 S 的整数个数 c</strong></p>
+<p><strong>输入： 第一行输入 n，第二行输入代表 S 的 n 个整数，第三行输入 q，第四行输入代表 T 的 q 个整数。</strong></p>
+<p><strong>输出：用1行输出C</strong></p>
+<p><strong>限制： $n\leq1000$，$q\leq500$ ，$0\leq{S,T的元素}\leq{10^9}$，T中元素不重复</strong></p>
+<p><strong>输入示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">3</span><br><span class="line">3 4 1</span><br></pre></td></tr></table></figure>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    A[n]=key;<span class="comment">//通过将最后一个置为key的方法，引入标记，可以提升效率，在处理大数据的时候会有显著效果</span></span><br><span class="line">    <span class="keyword">while</span>(A[i]!=key) i++;</span><br><span class="line">    <span class="keyword">return</span> i!=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183930.png" alt="">因为线性搜索的算法复杂度为$O(n)$，所以算法的复杂度$O(qn)$</p>
+<h1 id="二分搜索-1"><a href="#二分搜索-1" class="headerlink" title="二分搜索"></a>二分搜索</h1><p>对于含有 n 个元素的素组执行线性搜索以及二分搜索时，最坏的情况下运算次数如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元素数</th>
+<th style="text-align:center">线性搜索</th>
+<th style="text-align:center">二分搜索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">1000000</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最坏情况下二分搜索的复杂度大概是$log_2n$</p>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>同上题，假设输入有序数列</p>
+<h2 id="程序-1"><a href="#程序-1" class="headerlink" title="程序"></a>程序</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">search</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right=n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">        mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(key==A[mid]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key&gt;A[mid])left=mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> right=mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n,A[<span class="number">10001</span>],q,key,sum=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;key);</span><br><span class="line">        <span class="keyword">if</span> (search(A,n,key))</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p><img src="http://image.wmgx.top/img/20190724183948.png" alt=""></p>
+<h1 id="散列法-1"><a href="#散列法-1" class="headerlink" title="散列法"></a>散列法</h1><p>不同于数组的下标索引，可以通过键值直接查到对应值，每一个键值都有一个唯一对应的值</p>
+<p>数组索引 a[0],a[1],a[2]……</p>
+<p>散列        a[key0],a[key1],a[key2]……</p>
+<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><ol>
+<li>通过散列函数在键值与值之间建立一个对应的函数关系Hash() </li>
+<li>存储位置可以通过 address=Hash(key) 的方式运算出来</li>
+<li>在插入和搜索时通过步骤2的方式可以迅速得出键值对应值的存储位置</li>
+</ol>
+<h2 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h2><p>方法中步骤1中所涉及的函数关系叫做散列函数</p>
+<p>散列函数在使用的时候应该注意：</p>
+<ul>
+<li><p>简单，快速的可以计算出结果</p>
+</li>
+<li><p>在双散列结构中，当多个键值的散列值相同时，即冲突发生时，可以调用hash1() hash2() hash3()……等一系列散列函数得到不同的散列值</p>
+</li>
+</ul>
+<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种对象，可以对容器中对象进行迭代处理，指向容器中的位置</p>
+<p><strong>可以使用的运算符</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">++</td>
+<td style="text-align:center">指向下一个迭代器</td>
+</tr>
+<tr>
+<td style="text-align:center">==，!=</td>
+<td style="text-align:center">判断两个迭代器指向位置是否相等</td>
+</tr>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">将运算符右侧迭代器赋值给左侧迭代器</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">返回该位置元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>容器函数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">begin()</td>
+<td style="text-align:center">返回容器的开头元素</td>
+</tr>
+<tr>
+<td style="text-align:center">end()</td>
+<td style="text-align:center">返回容器的最后一个元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        v.push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span>(iter=v.begin();iter!=v.end();iter++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.wmgx.top/img/20190724193948.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>算法学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>学习笔记</tag>
+        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
