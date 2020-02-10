@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.wmgx.top/2020/02/09/springmvc/</loc>
+    <loc>http://blog.wmgx.top/2020/01/20/Mybatis%E7%BB%AD/</loc>
     
-    <lastmod>2020-02-09T16:16:36.596Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.wmgx.top/2020/02/09/springmvc2/</loc>
-    
-    <lastmod>2020-02-09T16:15:48.356Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.wmgx.top/2020/02/02/%E7%AC%AC%E4%B8%80%E4%B8%AAspring/</loc>
-    
-    <lastmod>2020-02-08T21:42:12.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.wmgx.top/2020/01/23/Mybatis%E7%BB%AD/</loc>
-    
-    <lastmod>2020-02-05T17:46:37.301Z</lastmod>
+    <lastmod>2020-02-10T12:19:38.666Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.wmgx.top/2020/01/20/%E7%AC%AC%E4%B8%80%E4%B8%AAmybatis/</loc>
     
-    <lastmod>2020-02-05T17:45:18.827Z</lastmod>
+    <lastmod>2020-02-10T12:19:22.638Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wmgx.top/2020/02/02/%E7%AC%AC%E4%B8%80%E4%B8%AAspring/</loc>
+    
+    <lastmod>2020-02-10T12:19:17.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wmgx.top/2020/02/09/springmvc2/</loc>
+    
+    <lastmod>2020-02-10T12:18:45.797Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.wmgx.top/2020/02/09/springmvc/</loc>
+    
+    <lastmod>2020-02-10T12:18:38.392Z</lastmod>
     
   </url>
   
